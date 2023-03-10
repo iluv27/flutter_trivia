@@ -62,7 +62,7 @@ class _SplashPageState extends State<SplashPage>
                       TypewriterAnimatedText(
                         'Welcome to Flutter Trivia_',
                         textStyle: const TextStyle(
-                          fontSize: 30.0,
+                          fontSize: 28.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
