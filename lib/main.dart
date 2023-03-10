@@ -27,9 +27,7 @@ class _HomePageState extends State<HomePage> {
   // }
 
   // void route() {
-  //   Navigator.pushReplacement(context, MaterialPageRoute(builder: ((context) {
-  //     return const QuizHomeScreen();
-  //   })));
+
   // }
 
   // Future<Timer> loader() async {
