@@ -90,7 +90,7 @@ class _SplashPageState extends State<SplashPage>
             ),
             Positioned(
               height: 65,
-              width: 350,
+              width: MediaQuery.of(context).size.width * 0.75,
               bottom: 90,
               child: Container(
                 decoration: BoxDecoration(
@@ -103,12 +103,12 @@ class _SplashPageState extends State<SplashPage>
                       Colors.white.withOpacity(0.1),
                       Colors.white.withOpacity(0.3),
                     ],
-                    stops: [0.0, 0.5, 1.0],
+                    stops: const [0.0, 0.5, 1.0],
                   ),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.2),
-                      blurRadius: 10,
+                      blurRadius: 8,
                       offset: const Offset(0, 5),
                     ),
                   ],
