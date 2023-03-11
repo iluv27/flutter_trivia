@@ -16,21 +16,72 @@ class _QuizScreenState extends State<QuizScreen> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
           elevation: 0,
-          leading: const Icon(
-            Icons.flip_to_back_outlined,
-            color: Colors.blueAccent,
+          leading: IconButton(
+            onPressed: (() {
+              Navigator.pop(context);
+            }),
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black87,
+            ),
           ),
-          title: const Text(
-            'Stateful Widgets',
-            style: TextStyle(
-                color: Colors.black87,
-                fontSize: 20,
-                fontWeight: FontWeight.w700),
+          actions: const [
+            Padding(
+              padding: EdgeInsets.only(right: 8.0),
+              child: Icon(
+                Icons.api_outlined,
+                color: Colors.black54,
+              ),
+            ),
+          ],
+          titleSpacing: 0,
+          title: const Center(
+            child: Text(
+              'Stateful Widgets',
+              style: TextStyle(
+                  color: Colors.black87,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700),
+            ),
           ),
         ),
-        body: buildQuizScreen(),
+        body: Container(
+          height: MediaQuery.of(context).size.height * 1,
+          decoration: ShapeDecoration(
+            gradient: const LinearGradient(
+              colors: [
+                Color.fromARGB(255, 243, 172, 255),
+                Color.fromARGB(255, 191, 168, 255)
+              ],
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(0),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    blurRadius: 8,
+                    offset: const Offset(0, 5),
+                  ),
+                ],
+              ),
+              child: SizedBox(
+                width: double.infinity,
+                height: 300,
+                child: buildQuizScreen(),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -97,23 +148,42 @@ class _QuizScreenState extends State<QuizScreen> {
     final answers = question['answers'];
 
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0, left: 20, right: 20),
+      padding: const EdgeInsets.only(top: 20.0, left: 30, right: 30),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const SizedBox(height: 20),
-          Text(
-            'Question ${currentQuestionIndex + 1}/${questions.length}',
-            style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 167, 169, 38)),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Question ${currentQuestionIndex + 1}/${questions.length}',
+                style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(210, 38, 169, 138)),
+              ),
+              SizedBox(
+                height: 30,
+                width: 30,
+                child: CircularProgressIndicator(
+                  backgroundColor: const Color.fromARGB(92, 99, 216, 99),
+                  value: currentQuestionIndex / (questions.length - 1),
+                  strokeWidth: 4,
+                  valueColor: const AlwaysStoppedAnimation<Color>(
+                      Color.fromARGB(255, 99, 216, 99)),
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 30),
           Text(
             question['question'],
-            style: const TextStyle(fontSize: 28),
+            style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                color: Color.fromARGB(169, 0, 0, 0)),
           ),
           const SizedBox(height: 20),
           for (var answer in answers)
@@ -128,34 +198,28 @@ class _QuizScreenState extends State<QuizScreen> {
                   backgroundColor:
                       selectedAnswers[currentQuestionIndex] == answer
                           ? MaterialStateProperty.all(Colors.green)
-                          : null,
+                          : MaterialStateProperty.all(
+                              const Color.fromARGB(255, 228, 228, 228)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
                 ),
-                child: Text(answer),
+                child: Text(
+                  answer,
+                  style: const TextStyle(
+                      color: Color.fromARGB(227, 41, 38, 38),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ),
               ),
             ),
-          const SizedBox(height: 20),
-          SizedBox(
-            height: 120,
-            width: 100,
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 130.0, vertical: 8),
-              child: CircularProgressIndicator(
-                value: currentQuestionIndex / (questions.length - 1),
-                strokeWidth: 10,
-                valueColor: const AlwaysStoppedAnimation<Color>(Colors.blue),
-              ),
-            ),
-          ),
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () => onAnswerSelected(''),
             style: ElevatedButton.styleFrom(
+              minimumSize: const Size(100, 50),
               backgroundColor: Colors.grey,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
