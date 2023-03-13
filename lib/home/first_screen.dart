@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import '../q&a/second_screen.dart';
 import 'package:flutter_trivia/q&a/third_screen.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
@@ -92,7 +93,16 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                   ),
                 ),
               ),
-              PietPainting(),
+              Positioned(
+                height: MediaQuery.of(context).size.height * 0.47,
+                width: MediaQuery.of(context).size.width,
+                top: 210,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15.0),
+                  child: PietPainting(),
+                ),
+              ),
+
               Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
@@ -152,10 +162,10 @@ class ShortCard extends StatelessWidget {
         // Navigate to quiz screen for the selected category
       },
       child: Container(
-        height: 100,
-        width: MediaQuery.maybeOf(context)!.size.width * 0.4,
+        height: MediaQuery.maybeOf(context)!.size.height,
+        width: MediaQuery.maybeOf(context)!.size.width,
         decoration: BoxDecoration(
-          color: Colors.amberAccent,
+          color: Colors.yellow,
           borderRadius: BorderRadius.circular(20.0),
           boxShadow: [
             BoxShadow(
@@ -166,64 +176,41 @@ class ShortCard extends StatelessWidget {
             ),
           ],
         ),
-        child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.0),
-            gradient: LinearGradient(
-              begin: Alignment.bottomRight,
-              stops: const [0.1, 0.9],
-              colors: [
-                Colors.black.withOpacity(0.4),
-                Colors.black.withOpacity(0.1),
-              ],
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Icon(
-                  Icons.face_retouching_off_sharp,
-                  size: 40,
-                  color: Colors.lightBlueAccent,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Icon(
+                Icons.face_retouching_off_sharp,
+                size: 30,
+                color: Colors.lightBlueAccent,
+              ),
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
                 ),
-                const SizedBox(
-                  height: 10,
+              ),
+              const Text(
+                '130 Questions',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w400,
                 ),
-                Text(
-                  title,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+              ),
+              const Text(
+                'Let\'s Start>',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w700,
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  '130 Questions',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  'Let\'s Start>',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -244,8 +231,8 @@ class LongCard extends StatelessWidget {
         // Navigate to quiz screen for the selected category
       },
       child: Container(
-        height: 200,
-        width: MediaQuery.maybeOf(context)!.size.width * 0.4,
+        height: MediaQuery.maybeOf(context)!.size.height,
+        width: MediaQuery.maybeOf(context)!.size.width,
         decoration: BoxDecoration(
           color: Colors.green,
           borderRadius: BorderRadius.circular(20.0),
@@ -325,49 +312,59 @@ class LongCard extends StatelessWidget {
 
 const cellRed = Color(0xffc73232);
 const cellMustard = Color(0xffd7aa22);
-const cellGrey = Color(0xffcfd4e0);
 const cellBlue = Color(0xff1553be);
-const background = Color(0xff242830);
 
 class PietPainting extends StatelessWidget {
   const PietPainting({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: background,
-      child: LayoutGrid(
-        columnGap: 12,
-        rowGap: 12,
-        areas: '''
-          r R B B  B
-          r R Y Y  Y
-          y R Y Y  Y
-          y R g b yy
-        ''',
-        // A number of extension methods are provided for concise track sizing
-        columnSizes: [1.0.fr, 3.5.fr, 1.3.fr, 1.3.fr, 1.3.fr],
-        rowSizes: [
-          1.0.fr,
-          0.3.fr,
-          1.5.fr,
-          1.2.fr,
-        ],
-        children: [
-          // Column 1
-          gridArea('r').containing(Container(color: cellRed)),
-          gridArea('y').containing(Container(color: cellMustard)),
-          // Column 2
-          gridArea('R').containing(Container(color: cellRed)),
-          // Column 3
-          gridArea('B').containing(Container(color: cellBlue)),
-          gridArea('Y').containing(Container(color: cellMustard)),
-          gridArea('g').containing(Container(color: cellGrey)),
-          // Column 4
-          gridArea('b').containing(Container(color: cellBlue)),
-          // Column 5
-          gridArea('yy').containing(Container(color: cellMustard)),
-        ],
+    return SizedBox(
+      width: 400,
+      height: 300, // Limit the height of the painting
+      child: SingleChildScrollView(
+        child: SizedBox(
+          width: 400,
+          height:
+              850, // Set the height to be greater than or equal to the height of the content
+          child: LayoutGrid(
+            columnGap: 15,
+            rowGap: 20,
+            areas: '''
+               A B 
+               A b
+               a b
+               c C
+               c D
+               d D
+           
+            ''',
+            // A number of extension methods are provided for concise track sizing
+            columnSizes: [
+              1.fr,
+              1.fr,
+            ],
+            rowSizes: [0.04.fr, 0.02.fr, 0.04.fr, 0.04.fr, 0.02.fr, 0.04.fr],
+            children: [
+              // Column 1
+              gridArea('d').containing(Container(color: cellRed)),
+              gridArea('C').containing(Container(color: cellMustard)),
+              gridArea('c').containing(Container(color: cellBlue)),
+              // Column 2
+              gridArea('b').containing(
+                  LongCard(title: 'title', image: 'image/image122.jpg')),
+              gridArea('A').containing(
+                  LongCard(title: 'title', image: 'image/image122.jpg')),
+              // Column 3
+              gridArea('B').containing(
+                  ShortCard(title: 'title', image: 'image/image122.jpg')),
+              gridArea('a').containing(
+                  ShortCard(title: 'title', image: 'image/image122.jpg')),
+              gridArea('a').containing(
+                  ShortCard(title: 'title', image: 'image/image122.jpg')),
+            ],
+          ),
+        ),
       ),
     );
   }
