@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'home/load_screen.dart';
-import 'home/first_screen.dart';
-import 'dart:async';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

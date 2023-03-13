@@ -1,8 +1,5 @@
 // ignore_for_file: implementation_imports, library_private_types_in_public_api
 
-import 'dart:math';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'first_screen.dart';
