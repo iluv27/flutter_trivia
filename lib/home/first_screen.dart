@@ -239,12 +239,14 @@ class LongCard extends StatelessWidget {
       required this.title,
       required this.image,
       required this.textQuestion,
-      required this.color});
+      required this.color,
+      required this.scale});
 
   final String title;
   final String image;
   final Color color;
   final String textQuestion;
+  final double scale;
 
   @override
   Widget build(BuildContext context) {
@@ -280,46 +282,57 @@ class LongCard extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.only(left: 20.0, top: 25),
+            padding: const EdgeInsets.only(left: 0.0, top: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Icon(
-                  Icons.flag_circle,
-                  size: 60,
-                  color: Color.fromARGB(255, 238, 255, 237),
+                Image.asset(
+                  image,
+                  scale: scale,
+                  fit: BoxFit.fill,
+                  width: 110,
+                  height: 90,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
-                Text(
-                  title,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.bold,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                Text(
-                  textQuestion,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w400,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: Text(
+                    textQuestion,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  'Let\'s Start>',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w700,
+                const Padding(
+                  padding: EdgeInsets.only(left: 15.0),
+                  child: Text(
+                    'Let\'s Start>',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ],
@@ -367,7 +380,8 @@ class PietPainting extends StatelessWidget {
 
               gridArea('A').containing(const LongCard(
                 title: 'Responsive Screens',
-                image: 'image/image122.jpg',
+                image: 'images/icon1.png',
+                scale: 4,
                 color: Color.fromARGB(255, 109, 226, 255),
                 textQuestion: '120 Questions',
               )),
@@ -397,25 +411,28 @@ class PietPainting extends StatelessWidget {
               )),
               gridArea('b').containing(const LongCard(
                 title: 'State Management',
-                image: 'image/image122.jpg',
+                image: 'images/icon2.png',
+                scale: 1,
                 color: Color.fromARGB(255, 97, 88, 252),
                 textQuestion: '100 Questions',
               )),
               gridArea('c').containing(const LongCard(
                 title: 'Flutter Layout',
-                image: 'image/image122.jpg',
+                image: 'images/icon3.png',
+                scale: 9,
                 color: Color.fromARGB(255, 88, 145, 252),
                 textQuestion: '120 Questions',
               )),
               gridArea('C').containing(const ShortCard(
                 title: 'Hot Reload',
-                image: 'image/image122.jpg',
+                image: 'images/icon3.png',
                 color: Color.fromARGB(255, 224, 93, 250),
                 textQuestion: '50 Questions',
               )),
               gridArea('D').containing(const LongCard(
                 title: 'Scrollable Views',
-                image: 'image/image122.jpg',
+                image: 'images/icon4.png',
+                scale: 9,
                 color: Color.fromARGB(255, 109, 226, 255),
                 textQuestion: '50 Questions',
               )),
