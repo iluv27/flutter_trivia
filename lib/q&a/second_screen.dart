@@ -1,6 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'third_screen.dart';
+import 'dart:math' as math;
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -13,72 +15,119 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        leading: IconButton(
-          onPressed: (() {
-            Navigator.pop(context);
-          }),
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black87,
-          ),
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 8.0),
-            child: Icon(
-              Icons.api_outlined,
-              color: Colors.black54,
+        appBar: AppBar(
+          flexibleSpace: Container(
+              decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.blue,
+                Colors.teal,
+              ],
+            ),
+          )),
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          leading: IconButton(
+            onPressed: (() {
+              Navigator.pop(context);
+            }),
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black87,
             ),
           ),
-        ],
-        title: const Center(
-          child: Text(
-            'Stateful Widgets',
-            style: TextStyle(
-                color: Colors.black87,
-                fontSize: 20,
-                fontWeight: FontWeight.w700),
-          ),
-        ),
-      ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        decoration: ShapeDecoration(
-          gradient: const LinearGradient(
-            colors: [
-              Color.fromARGB(255, 243, 172, 255),
-              Color.fromARGB(255, 191, 168, 255)
-            ],
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(0),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 240.0),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 8,
-                    offset: const Offset(0, 5),
-                  ),
-                ],
+          actions: const [
+            Padding(
+              padding: EdgeInsets.only(right: 8.0),
+              child: Icon(
+                Icons.api_outlined,
+                color: Colors.black54,
               ),
-              child: buildQuizScreen(),
+            ),
+          ],
+          title: const Center(
+            child: Text(
+              'Stateful Widgets',
+              style: TextStyle(
+                  color: Colors.black87,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700),
             ),
           ),
         ),
-      ),
-    );
+        body: Stack(
+          children: [
+            Positioned(
+              child: ClipPath(
+                clipper: AppBarClipper(),
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  decoration: ShapeDecoration(
+                    gradient: const LinearGradient(
+                      colors: [
+                        Color.fromARGB(255, 243, 172, 255),
+                        Color.fromARGB(255, 191, 168, 255)
+                      ],
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.2,
+              top: 500,
+              child: ClipPath(
+                clipper: AppBarClipper2(),
+                child: Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.rotationX(math.pi),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    decoration: ShapeDecoration(
+                      gradient: const LinearGradient(
+                        colors: [
+                          Color.fromARGB(255, 148, 52, 156),
+                          Color.fromARGB(255, 238, 234, 247)
+                        ],
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 240.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 8,
+                          offset: const Offset(0, 5),
+                        ),
+                      ],
+                    ),
+                    child: buildQuizScreen(),
+                  ),
+                ),
+              ),
+            )
+          ],
+        ));
   }
 
   int currentQuestionIndex = 0;

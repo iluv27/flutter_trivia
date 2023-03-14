@@ -46,17 +46,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Stack(
               children: [
                 Positioned(
-                  top: 28,
+                  top: 15,
                   left: 10,
                   child: IconButton(
                     color: Colors.white,
-                    iconSize: 25,
+                    iconSize: 30,
                     onPressed: () {},
                     icon: const Icon(Icons.menu_rounded),
                   ),
                 ),
                 Positioned(
-                  top: 40,
+                  top: 26,
                   left: 60,
                   child: Text(
                     title,

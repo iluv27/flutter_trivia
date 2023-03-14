@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import '../q&a/second_screen.dart';
 import 'package:flutter_trivia/q&a/third_screen.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
@@ -19,7 +18,7 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
         // ignore: prefer_const_constructors
         appBar: CustomAppBar(
           title: 'FLUTTER TRIVIA',
-          height: 120,
+          height: 100,
           backgroundColor: const Color.fromARGB(255, 211, 202, 202),
           gradientStart: Colors.blue,
           gradientEnd: Colors.purple,
@@ -34,7 +33,7 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                 alignment: Alignment.topCenter,
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.9,
-                  height: MediaQuery.of(context).size.height * 0.2,
+                  height: MediaQuery.of(context).size.height * 0.18,
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       colors: [Colors.blue, Colors.purple],
@@ -46,20 +45,20 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 30.0, left: 20.0),
+                    padding: const EdgeInsets.only(top: 25.0, left: 25.0),
                     child: Stack(
                       alignment: Alignment.topLeft,
                       children: [
                         const Text(
-                          'Quiz of the Day,',
+                          'Quiz of the Day!!',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 20.0,
+                            fontSize: 24.0,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                         const Positioned(
-                          top: 30,
+                          top: 35,
                           child: Text(
                             '100 Questions',
                             style: TextStyle(
@@ -70,22 +69,22 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                           ),
                         ),
                         const Positioned(
-                          top: 90,
+                          top: 85,
                           child: Text(
                             'Let\'s Start>',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 22.0,
+                              fontSize: 20.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         Positioned(
-                          top: 10,
-                          right: 20,
+                          bottom: 20,
+                          left: 160,
                           child: Image.asset(
                             'images/dash1.png',
-                            scale: 4,
+                            scale: 3,
                           ),
                         )
                       ],
@@ -94,11 +93,11 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                 ),
               ),
               Positioned(
-                height: MediaQuery.of(context).size.height * 0.47,
+                height: MediaQuery.of(context).size.height * 0.52,
                 width: MediaQuery.of(context).size.width,
-                top: 210,
+                top: 190,
                 child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15.0),
+                  padding: EdgeInsets.only(left: 10.0, right: 25),
                   child: PietPainting(),
                 ),
               ),
@@ -150,10 +149,17 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
 }
 
 class ShortCard extends StatelessWidget {
-  const ShortCard({super.key, required this.title, required this.image});
+  const ShortCard(
+      {super.key,
+      required this.title,
+      required this.image,
+      required this.color,
+      required this.textQuestion});
 
   final String title;
   final String image;
+  final Color color;
+  final String textQuestion;
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +171,7 @@ class ShortCard extends StatelessWidget {
         height: MediaQuery.maybeOf(context)!.size.height,
         width: MediaQuery.maybeOf(context)!.size.width,
         decoration: BoxDecoration(
-          color: Colors.yellow,
+          color: color,
           borderRadius: BorderRadius.circular(20.0),
           boxShadow: [
             BoxShadow(
@@ -177,36 +183,45 @@ class ShortCard extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.only(left: 20.0, top: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Icon(
                 Icons.face_retouching_off_sharp,
-                size: 30,
-                color: Colors.lightBlueAccent,
+                size: 35,
+                color: Color.fromARGB(255, 233, 240, 243),
+              ),
+              const SizedBox(
+                height: 10,
               ),
               Text(
                 title,
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 22.0,
+                  fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const Text(
-                '130 Questions',
-                style: TextStyle(
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                textQuestion,
+                style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 18.0,
+                  fontSize: 14.0,
                   fontWeight: FontWeight.w400,
                 ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               const Text(
                 'Let\'s Start>',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20.0,
+                  fontSize: 16.0,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -219,10 +234,17 @@ class ShortCard extends StatelessWidget {
 }
 
 class LongCard extends StatelessWidget {
-  const LongCard({super.key, required this.title, required this.image});
+  const LongCard(
+      {super.key,
+      required this.title,
+      required this.image,
+      required this.textQuestion,
+      required this.color});
 
   final String title;
   final String image;
+  final Color color;
+  final String textQuestion;
 
   @override
   Widget build(BuildContext context) {
@@ -234,11 +256,11 @@ class LongCard extends StatelessWidget {
         height: MediaQuery.maybeOf(context)!.size.height,
         width: MediaQuery.maybeOf(context)!.size.width,
         decoration: BoxDecoration(
-          color: Colors.green,
+          color: color,
           borderRadius: BorderRadius.circular(20.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(0.3),
               blurRadius: 5,
               spreadRadius: 1,
               offset: const Offset(0, 2),
@@ -246,7 +268,6 @@ class LongCard extends StatelessWidget {
           ],
         ),
         child: Container(
-          height: 200,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.0),
             gradient: LinearGradient(
@@ -259,17 +280,17 @@ class LongCard extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.only(left: 20.0, top: 25),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Icon(
-                  Icons.face_retouching_off_sharp,
-                  size: 40,
-                  color: Colors.lightBlueAccent,
+                  Icons.flag_circle,
+                  size: 60,
+                  color: Color.fromARGB(255, 238, 255, 237),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Text(
                   title,
@@ -280,13 +301,13 @@ class LongCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
-                const Text(
-                  '130 Questions',
-                  style: TextStyle(
+                Text(
+                  textQuestion,
+                  style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 18.0,
+                    fontSize: 16.0,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -297,7 +318,7 @@ class LongCard extends StatelessWidget {
                   'Let\'s Start>',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20.0,
+                    fontSize: 18.0,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -309,10 +330,6 @@ class LongCard extends StatelessWidget {
     );
   }
 }
-
-const cellRed = Color(0xffc73232);
-const cellMustard = Color(0xffd7aa22);
-const cellBlue = Color(0xff1553be);
 
 class PietPainting extends StatelessWidget {
   const PietPainting({Key? key}) : super(key: key);
@@ -347,21 +364,68 @@ class PietPainting extends StatelessWidget {
             rowSizes: [0.04.fr, 0.02.fr, 0.04.fr, 0.04.fr, 0.02.fr, 0.04.fr],
             children: [
               // Column 1
-              gridArea('d').containing(Container(color: cellRed)),
-              gridArea('C').containing(Container(color: cellMustard)),
-              gridArea('c').containing(Container(color: cellBlue)),
-              // Column 2
-              gridArea('b').containing(
-                  LongCard(title: 'title', image: 'image/image122.jpg')),
-              gridArea('A').containing(
-                  LongCard(title: 'title', image: 'image/image122.jpg')),
+
+              gridArea('A').containing(const LongCard(
+                title: 'Responsive Screens',
+                image: 'image/image122.jpg',
+                color: Color.fromARGB(255, 109, 226, 255),
+                textQuestion: '120 Questions',
+              )),
               // Column 3
-              gridArea('B').containing(
-                  ShortCard(title: 'title', image: 'image/image122.jpg')),
-              gridArea('a').containing(
-                  ShortCard(title: 'title', image: 'image/image122.jpg')),
-              gridArea('a').containing(
-                  ShortCard(title: 'title', image: 'image/image122.jpg')),
+              gridArea('B').containing(const ShortCard(
+                title: 'Widgets',
+                image: 'image/image122.jpg',
+                color: Color.fromARGB(255, 236, 68, 255),
+                textQuestion: '60 Questions',
+              )),
+              gridArea('a').containing(const ShortCard(
+                title: 'APIs',
+                image: 'image/image122.jpg',
+                color: Color.fromARGB(255, 250, 93, 226),
+                textQuestion: '220 Questions',
+              )),
+              gridArea('a').containing(const ShortCard(
+                title: 'APIs',
+                image: 'image/image122.jpg',
+                color: Color.fromARGB(
+                  255,
+                  250,
+                  93,
+                  226,
+                ),
+                textQuestion: '50 Questions',
+              )),
+              gridArea('b').containing(const LongCard(
+                title: 'State Management',
+                image: 'image/image122.jpg',
+                color: Color.fromARGB(255, 97, 88, 252),
+                textQuestion: '100 Questions',
+              )),
+              gridArea('c').containing(const LongCard(
+                title: 'Flutter Layout',
+                image: 'image/image122.jpg',
+                color: Color.fromARGB(255, 88, 145, 252),
+                textQuestion: '120 Questions',
+              )),
+              gridArea('C').containing(const ShortCard(
+                title: 'Hot Reload',
+                image: 'image/image122.jpg',
+                color: Color.fromARGB(255, 224, 93, 250),
+                textQuestion: '50 Questions',
+              )),
+              gridArea('D').containing(const LongCard(
+                title: 'Scrollable Views',
+                image: 'image/image122.jpg',
+                color: Color.fromARGB(255, 109, 226, 255),
+                textQuestion: '50 Questions',
+              )),
+              gridArea('d').containing(const ShortCard(
+                title: 'Flutter UI',
+                image: 'image/image122.jpg',
+                color: Color.fromARGB(255, 250, 93, 226),
+                textQuestion: '50 Questions',
+              )),
+              // Column 2
             ],
           ),
         ),

@@ -18,21 +18,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   loader();
-  // }
-
-  // void route() {
-
-  // }
-
-  // Future<Timer> loader() async {
-  //   var duration = const Duration(seconds: 5);
-  //   return Timer(duration, route);
-  // }
-
   @override
   Widget build(BuildContext context) {
     return const SplashPage();
