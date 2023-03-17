@@ -289,15 +289,12 @@ class LongCard extends StatelessWidget {
                 Image.asset(
                   image,
                   scale: scale,
-                  fit: BoxFit.fill,
-                  width: 110,
-                  height: 90,
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 15.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Text(
                     title,
                     style: const TextStyle(
@@ -381,7 +378,7 @@ class PietPainting extends StatelessWidget {
               gridArea('A').containing(const LongCard(
                 title: 'Responsive Screens',
                 image: 'images/icon1.png',
-                scale: 4,
+                scale: 5,
                 color: Color.fromARGB(255, 109, 226, 255),
                 textQuestion: '120 Questions',
               )),
@@ -412,7 +409,7 @@ class PietPainting extends StatelessWidget {
               gridArea('b').containing(const LongCard(
                 title: 'State Management',
                 image: 'images/icon2.png',
-                scale: 1,
+                scale: 6,
                 color: Color.fromARGB(255, 97, 88, 252),
                 textQuestion: '100 Questions',
               )),
@@ -432,7 +429,7 @@ class PietPainting extends StatelessWidget {
               gridArea('D').containing(const LongCard(
                 title: 'Scrollable Views',
                 image: 'images/icon4.png',
-                scale: 9,
+                scale: 6,
                 color: Color.fromARGB(255, 109, 226, 255),
                 textQuestion: '50 Questions',
               )),

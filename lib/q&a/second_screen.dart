@@ -80,6 +80,29 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
             Positioned(
               width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.05,
+              top: 100,
+              child: ClipPath(
+                clipper: AppBarClipper2(),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 211, 202, 202),
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color.fromARGB(255, 96, 96, 96)
+                            .withOpacity(0.6),
+                        spreadRadius: 4,
+                        blurRadius: 7,
+                        offset:
+                            const Offset(3, 6), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.2,
               top: 500,
               child: ClipPath(
@@ -125,7 +148,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ));
   }
