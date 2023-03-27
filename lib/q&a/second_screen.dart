@@ -22,8 +22,9 @@ class _QuizScreenState extends State<QuizScreen> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Colors.blue,
-                Colors.teal,
+                Color.fromARGB(255, 233, 107, 255),
+                Color.fromARGB(255, 87, 52, 184),
+                Color.fromARGB(255, 69, 28, 181)
               ],
             ),
           )),
@@ -35,7 +36,7 @@ class _QuizScreenState extends State<QuizScreen> {
             }),
             icon: const Icon(
               Icons.arrow_back_ios,
-              color: Colors.black87,
+              color: Colors.white,
             ),
           ),
           actions: const [
@@ -43,17 +44,15 @@ class _QuizScreenState extends State<QuizScreen> {
               padding: EdgeInsets.only(right: 8.0),
               child: Icon(
                 Icons.api_outlined,
-                color: Colors.black54,
+                color: Colors.white,
               ),
             ),
           ],
           title: const Center(
             child: Text(
               'Stateful Widgets',
-              style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700),
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
             ),
           ),
         ),
@@ -63,12 +62,14 @@ class _QuizScreenState extends State<QuizScreen> {
               child: ClipPath(
                 clipper: AppBarClipper(),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.56,
                   decoration: ShapeDecoration(
                     gradient: const LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
                       colors: [
-                        Color.fromARGB(255, 243, 172, 255),
-                        Color.fromARGB(255, 191, 168, 255)
+                        Color.fromARGB(255, 69, 28, 181),
+                        Color.fromARGB(255, 233, 107, 255),
                       ],
                     ),
                     shape: RoundedRectangleBorder(
@@ -79,73 +80,22 @@ class _QuizScreenState extends State<QuizScreen> {
               ),
             ),
             Positioned(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.05,
-              top: 100,
-              child: ClipPath(
-                clipper: AppBarClipper2(),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 50.0, left: 15, right: 15),
                 child: Container(
+                  height: 530,
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 211, 202, 202),
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: const Color.fromARGB(255, 96, 96, 96)
-                            .withOpacity(0.6),
-                        spreadRadius: 4,
-                        blurRadius: 7,
-                        offset:
-                            const Offset(3, 6), // changes position of shadow
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
                       ),
                     ],
                   ),
-                ),
-              ),
-            ),
-            Positioned(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.2,
-              top: 500,
-              child: ClipPath(
-                clipper: AppBarClipper2(),
-                child: Transform(
-                  alignment: Alignment.center,
-                  transform: Matrix4.rotationX(math.pi),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    decoration: ShapeDecoration(
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color.fromARGB(255, 148, 52, 156),
-                          Color.fromARGB(255, 238, 234, 247)
-                        ],
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 240.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          blurRadius: 8,
-                          offset: const Offset(0, 5),
-                        ),
-                      ],
-                    ),
-                    child: buildQuizScreen(),
-                  ),
+                  child: buildQuizScreen(),
                 ),
               ),
             ),
@@ -155,23 +105,18 @@ class _QuizScreenState extends State<QuizScreen> {
 
   int currentQuestionIndex = 0;
   bool quizFinished = false;
-  List<String> allAnswers = [
+
+  List<String> correctAnswers = [
     'Paris',
-    'New York City',
     'Tokyo',
-    'London',
     'Dubai',
-    'Los Angeles',
-    'Moscow',
     'Hong Kong',
-    'Barcelona',
-    'Singapore'
+    'Moscow'
   ];
-  List<String> correctAnswers = ['Paris', 'Tokyo', 'Dubai', 'Hong Kong'];
 
   List<Map<String, dynamic>> questions = [
     {
-      'question': 'What is the capital city of France?',
+      'question': 'What is the meaning of Flutter?',
       'answers': ['Paris', 'New York City', 'London', 'Barcelona']
     },
     {
@@ -185,22 +130,26 @@ class _QuizScreenState extends State<QuizScreen> {
     {
       'question': 'What is the capital city of China?',
       'answers': ['Hong Kong', 'Moscow', 'Barcelona', 'New York City']
+    },
+    {
+      'question': 'What is the capital city of China?',
+      'answers': ['Hong Kong', 'Moscow', 'Barcelona', 'New York City']
     }
   ];
 
-  List<String> selectedAnswers = List.filled(4, '');
+  List<String> selectedAnswers = List.filled(5, '');
 
-  void onAnswerSelected(String answer) {
-    setState(() {
-      selectedAnswers[currentQuestionIndex] = answer;
+  // void onAnswerSelected(String answer) {
+  //   setState(() {
+  //     selectedAnswers[currentQuestionIndex] = answer;
 
-      if (currentQuestionIndex == questions.length - 1) {
-        quizFinished = true;
-      } else {
-        currentQuestionIndex++;
-      }
-    });
-  }
+  //     if (currentQuestionIndex == questions.length - 1) {
+  //       quizFinished = true;
+  //     } else {
+  //       currentQuestionIndex++;
+  //     }
+  //   });
+  // }
 
   void onQuizFinished(String answer) {
     setState(() {
@@ -243,98 +192,134 @@ class _QuizScreenState extends State<QuizScreen> {
     final question = questions[currentQuestionIndex];
     final answers = question['answers'];
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Stack(
       children: [
-        const SizedBox(height: 10),
-        Padding(
-          padding: const EdgeInsets.only(top: 20.0, left: 30, right: 30),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Question ${currentQuestionIndex + 1}/${questions.length}',
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0, left: 30, right: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Question ${currentQuestionIndex + 1}/${questions.length}',
+                    style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(210, 38, 169, 138)),
+                  ),
+                  SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: CircularProgressIndicator(
+                      backgroundColor: const Color.fromARGB(92, 99, 216, 99),
+                      value: currentQuestionIndex / (questions.length - 1),
+                      strokeWidth: 4,
+                      valueColor: const AlwaysStoppedAnimation<Color>(
+                          Color.fromARGB(255, 99, 216, 99)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.only(left: 30, right: 30),
+              child: Text(
+                question['question'],
                 style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(210, 38, 169, 138)),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    color: Color.fromARGB(169, 0, 0, 0)),
               ),
-              SizedBox(
-                height: 30,
-                width: 30,
-                child: CircularProgressIndicator(
-                  backgroundColor: const Color.fromARGB(92, 99, 216, 99),
-                  value: currentQuestionIndex / (questions.length - 1),
-                  strokeWidth: 4,
-                  valueColor: const AlwaysStoppedAnimation<Color>(
-                      Color.fromARGB(255, 99, 216, 99)),
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 30),
-        Padding(
-          padding: const EdgeInsets.only(left: 30, right: 30),
-          child: Text(
-            question['question'],
-            style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-                color: Color.fromARGB(169, 0, 0, 0)),
-          ),
-        ),
-        const SizedBox(height: 20),
-        for (var answer in answers)
-          Padding(
-            padding: const EdgeInsets.only(top: 16, left: 30, right: 30),
-            child: ElevatedButton(
-              onPressed: () => onAnswerSelected2(answer),
-              style: ButtonStyle(
-                minimumSize: MaterialStateProperty.all<Size>(
-                    const Size(double.infinity, 50)),
-                elevation: MaterialStateProperty.all(0),
-                backgroundColor: selectedAnswers[currentQuestionIndex] == answer
-                    ? MaterialStateProperty.all(Colors.green)
-                    : MaterialStateProperty.all(
-                        const Color.fromARGB(255, 228, 228, 228)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+            ),
+            const SizedBox(height: 20),
+            for (var answer in answers)
+              Padding(
+                padding: const EdgeInsets.only(top: 16, left: 30, right: 30),
+                child: ElevatedButton(
+                  onPressed: (() {
+                    onAnswerSelected2(answer);
+                  }),
+                  style: ButtonStyle(
+                    minimumSize: MaterialStateProperty.all<Size>(
+                        const Size(double.infinity, 50)),
+                    elevation: MaterialStateProperty.all(0),
+                    backgroundColor:
+                        selectedAnswers[currentQuestionIndex] == answer
+                            ? MaterialStateProperty.all(Colors.green)
+                            : MaterialStateProperty.all(
+                                const Color.fromARGB(255, 228, 228, 228)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                  ),
+                  child: Text(
+                    answer,
+                    style: const TextStyle(
+                        color: Color.fromARGB(227, 41, 38, 38),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
-              child: Text(
-                answer,
-                style: const TextStyle(
-                    color: Color.fromARGB(227, 41, 38, 38),
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500),
+          ],
+        ),
+        Positioned(
+          bottom: 0,
+          child: Container(
+            decoration: const ShapeDecoration(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(18),
+                    bottomRight: Radius.circular(18)),
+              ),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromARGB(255, 69, 28, 181),
+                  Color.fromARGB(255, 233, 107, 255),
+                ],
               ),
             ),
-          ),
-        const SizedBox(height: 60),
-        ElevatedButton(
-          onPressed: () {
-            onQuizFinished('');
-            if (currentQuestionIndex == questions.length - 1) {
-              quizFinished = true;
-            } else {}
-          },
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            minimumSize: const Size(0, 60),
-            backgroundColor: Colors.grey,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(18),
-                  bottomRight: Radius.circular(18)),
+            child: ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  if (currentQuestionIndex == questions.length - 1) {
+                    // quizFinished = true;
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: ((context) {
+                      return buildFinishedScreen();
+                    })));
+                  } else if (currentQuestionIndex != questions.length) {
+                    currentQuestionIndex++;
+                  }
+                });
+
+                // onQuizFinished('');
+                // if (currentQuestionIndex == questions.length + 1) {
+                //   quizFinished = true;
+
+                // } else {}
+              },
+              style: ElevatedButton.styleFrom(
+                elevation: 0,
+                minimumSize: const Size(384, 60),
+                backgroundColor: Colors.transparent,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(18),
+                      bottomRight: Radius.circular(18)),
+                ),
+              ),
+              child: const Text(
+                'Next Question',
+                style: TextStyle(fontSize: 18),
+              ),
             ),
-          ),
-          child: const Text(
-            'Next Question',
-            style: TextStyle(fontSize: 18),
           ),
         ),
       ],
@@ -352,7 +337,44 @@ class _QuizScreenState extends State<QuizScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Quiz Results'),
+        flexibleSpace: Container(
+            decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromARGB(255, 233, 107, 255),
+              Color.fromARGB(255, 87, 52, 184),
+              Color.fromARGB(255, 69, 28, 181)
+            ],
+          ),
+        )),
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: (() {
+            Navigator.pop(context);
+          }),
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+        ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 8.0),
+            child: Icon(
+              Icons.api_outlined,
+              color: Colors.white,
+            ),
+          ),
+        ],
+        title: const Center(
+          child: Text(
+            'Quiz Results',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+          ),
+        ),
       ),
       body: Center(
         child: Column(
