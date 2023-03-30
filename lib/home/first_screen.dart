@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../q&a/second_screen.dart';
+import 'package:flutter_trivia/q&a/question1.dart';
 import 'package:flutter_trivia/q&a/third_screen.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
