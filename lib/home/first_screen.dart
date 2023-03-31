@@ -395,19 +395,19 @@ class PietPainting extends StatelessWidget {
               // Column 3
               gridArea('B').containing(const ShortCard(
                 title: 'Widgets',
-                image: 'image/image122.jpg',
+                image: 'images/icon7.png',
                 color: Color.fromARGB(255, 236, 68, 255),
                 textQuestion: '60 Questions',
               )),
               gridArea('a').containing(const ShortCard(
                 title: 'APIs',
-                image: 'image/image122.jpg',
+                image: 'images/icon6.png',
                 color: Color.fromARGB(255, 250, 93, 226),
                 textQuestion: '220 Questions',
               )),
               gridArea('a').containing(const ShortCard(
                 title: 'APIs',
-                image: 'image/image122.jpg',
+                image: 'images/icon6.png',
                 color: Color.fromARGB(
                   255,
                   250,
@@ -445,7 +445,7 @@ class PietPainting extends StatelessWidget {
               )),
               gridArea('d').containing(const ShortCard(
                 title: 'Flutter UI',
-                image: 'image/image122.jpg',
+                image: 'images/icon3.png',
                 color: Color.fromARGB(255, 250, 93, 226),
                 textQuestion: '50 Questions',
               )),
