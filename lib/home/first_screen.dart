@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_trivia/q&a/question1.dart';
+import 'package:flutter_trivia/question_One/question1.dart';
 import 'package:flutter_trivia/q&a/third_screen.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
@@ -105,16 +105,21 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
               Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color.fromARGB(255, 77, 146, 188),
-                          Color.fromARGB(255, 76, 160, 193)
-                        ],
+                    decoration: const ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(18),
+                        ),
+                      ),
+                      gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.blue,
+                          Color.fromARGB(255, 10, 115, 201),
+                          Color.fromARGB(255, 8, 76, 132)
+                        ],
                       ),
-                      borderRadius: BorderRadius.circular(15),
                     ),
                     child: ElevatedButton(
                       onPressed: (() {
@@ -129,14 +134,19 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0),
+                            borderRadius: BorderRadius.circular(18.0),
                           ),
                         ),
-                        elevation: MaterialStateProperty.all<double>(1),
+                        elevation: MaterialStateProperty.all<double>(0),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.transparent),
                       ),
                       child: const Text(
-                        'Choose Quiz',
-                        style: TextStyle(fontSize: 18),
+                        'Select Randomly',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            wordSpacing: 1),
                       ),
                     ),
                   )),

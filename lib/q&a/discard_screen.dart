@@ -1,7 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api, unused_local_variable
 
 import 'package:flutter/material.dart';
-import 'third_screen.dart';
 
 // void onAnswerSelected(String answer) {
 //   setState(() {

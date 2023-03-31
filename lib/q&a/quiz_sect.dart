@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 int currentQuestionIndex = 0;
 
 List<String> correctAnswers = [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'third_screen.dart';
-import 'quiz_sect.dart';
+import '../q&a/third_screen.dart';
+import '../q&a/quiz_sect.dart';
+import 'completed.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -94,7 +95,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       ),
                     ],
                   ),
-                  child: BuildQuizScreen(),
+                  child: const BuildQuizScreen(),
                 ),
               ),
             ),
@@ -260,184 +261,5 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
         ),
       ],
     );
-  }
-}
-
-class BuildFinishedScreen extends StatefulWidget {
-  const BuildFinishedScreen({super.key});
-
-  @override
-  State<BuildFinishedScreen> createState() => _BuildFinishedScreenState();
-}
-
-class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
-  int correctAnswersCount = 0;
-
-  List<String> selectedAnswers = List.filled(5, '');
-  bool quizFinished = false;
-
-  void onReset() {
-    setState(() {
-      currentQuestionIndex = 0;
-      quizFinished = false;
-      selectedAnswers = List.filled(4, '');
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    for (var i = 0; i < questions.length; i++) {
-      if (correctAnswers.contains(selectedAnswers[i])) {
-        correctAnswersCount++;
-      }
-    }
-    return Scaffold(
-        appBar: AppBar(
-          flexibleSpace: Container(
-              decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(255, 233, 107, 255),
-                Color.fromARGB(255, 87, 52, 184),
-                Color.fromARGB(255, 69, 28, 181)
-              ],
-            ),
-          )),
-          automaticallyImplyLeading: false,
-          elevation: 0,
-          leading: IconButton(
-            onPressed: (() {
-              Navigator.pop(context);
-            }),
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: Colors.white,
-            ),
-          ),
-          actions: const [
-            Padding(
-              padding: EdgeInsets.only(right: 8.0),
-              child: Icon(
-                Icons.api_outlined,
-                color: Colors.white,
-              ),
-            ),
-          ],
-          title: const Center(
-            child: Text(
-              'Quiz Results',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
-            ),
-          ),
-        ),
-        body: Stack(
-          children: [
-            Positioned(
-              child: ClipPath(
-                clipper: AppBarClipper(),
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  decoration: ShapeDecoration(
-                    gradient: const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color.fromARGB(255, 69, 28, 181),
-                        Color.fromARGB(255, 233, 107, 255),
-                      ],
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(0),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 200.0, left: 15, right: 15),
-                child: Container(
-                  height: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        blurRadius: 8,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'Quiz Completed!',
-                          style: TextStyle(
-                            fontSize: 24.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 16.0),
-                        Text(
-                          'You answered $correctAnswersCount out of ${questions.length} questions correctly.',
-                          style: const TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 32.0),
-                        Container(
-                          decoration: const ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(18),
-                              ),
-                            ),
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Color.fromARGB(255, 69, 28, 181),
-                                Color.fromARGB(255, 233, 107, 255),
-                              ],
-                            ),
-                          ),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Navigator.pushReplacement(context,
-                              //     MaterialPageRoute(builder: ((context) {
-                              //   return const BuildQuizScreen();
-                              // })));
-                            },
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0,
-                              minimumSize: const Size(200, 60),
-                              backgroundColor: Colors.transparent,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(18),
-                                ),
-                              ),
-                            ),
-                            child: const Text(
-                              'Restart Quiz',
-                              style: TextStyle(fontSize: 18),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ));
   }
 }
