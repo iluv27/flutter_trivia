@@ -164,12 +164,14 @@ class ShortCard extends StatelessWidget {
       required this.title,
       required this.image,
       required this.color,
-      required this.textQuestion});
+      required this.textQuestion,
+      required this.scale});
 
   final String title;
   final String image;
   final Color color;
   final String textQuestion;
+  final double scale;
 
   @override
   Widget build(BuildContext context) {
@@ -193,17 +195,16 @@ class ShortCard extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.only(left: 20.0, top: 20),
+          padding: const EdgeInsets.only(left: 20.0, top: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(
-                Icons.face_retouching_off_sharp,
-                size: 35,
-                color: Color.fromARGB(255, 233, 240, 243),
+              Image.asset(
+                image,
+                scale: scale,
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               Text(
                 title,
@@ -214,7 +215,7 @@ class ShortCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               Text(
                 textQuestion,
@@ -225,7 +226,7 @@ class ShortCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 5,
+                height: 10,
               ),
               const Text(
                 'Let\'s Start>',
@@ -395,19 +396,21 @@ class PietPainting extends StatelessWidget {
               // Column 3
               gridArea('B').containing(const ShortCard(
                 title: 'Widgets',
-                image: 'images/icon7.png',
+                image: 'images/icon3.png',
                 color: Color.fromARGB(255, 236, 68, 255),
                 textQuestion: '60 Questions',
+                scale: 10,
               )),
               gridArea('a').containing(const ShortCard(
                 title: 'APIs',
-                image: 'images/icon6.png',
+                image: 'images/icon8.png',
                 color: Color.fromARGB(255, 250, 93, 226),
                 textQuestion: '220 Questions',
+                scale: 10,
               )),
               gridArea('a').containing(const ShortCard(
                 title: 'APIs',
-                image: 'images/icon6.png',
+                image: 'images/icon8.png',
                 color: Color.fromARGB(
                   255,
                   250,
@@ -415,6 +418,7 @@ class PietPainting extends StatelessWidget {
                   226,
                 ),
                 textQuestion: '50 Questions',
+                scale: 10,
               )),
               gridArea('b').containing(const LongCard(
                 title: 'State Management',
@@ -425,16 +429,17 @@ class PietPainting extends StatelessWidget {
               )),
               gridArea('c').containing(const LongCard(
                 title: 'Flutter Layout',
-                image: 'images/icon3.png',
-                scale: 9,
+                image: 'images/icon7.png',
+                scale: 5,
                 color: Color.fromARGB(255, 88, 145, 252),
                 textQuestion: '120 Questions',
               )),
               gridArea('C').containing(const ShortCard(
                 title: 'Hot Reload',
-                image: 'images/icon3.png',
+                image: 'images/icon6.png',
                 color: Color.fromARGB(255, 224, 93, 250),
                 textQuestion: '50 Questions',
+                scale: 10,
               )),
               gridArea('D').containing(const LongCard(
                 title: 'Scrollable Views',
@@ -445,9 +450,10 @@ class PietPainting extends StatelessWidget {
               )),
               gridArea('d').containing(const ShortCard(
                 title: 'Flutter UI',
-                image: 'images/icon3.png',
+                image: 'images/icon5.png',
                 color: Color.fromARGB(255, 250, 93, 226),
                 textQuestion: '50 Questions',
+                scale: 10,
               )),
               // Column 2
             ],
