@@ -83,20 +83,19 @@ class _QuizScreenState extends State<QuizScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 50.0, left: 15, right: 15),
                 child: Container(
-                  height: 530,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        blurRadius: 8,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: const BuildQuizScreen(),
-                ),
+                    height: 530,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: BuildQuizScreen()),
               ),
             ),
           ],
@@ -105,7 +104,9 @@ class _QuizScreenState extends State<QuizScreen> {
 }
 
 class BuildQuizScreen extends StatefulWidget {
-  const BuildQuizScreen({super.key});
+  BuildQuizScreen({
+    super.key,
+  });
 
   @override
   State<BuildQuizScreen> createState() => _BuildQuizScreenState();
@@ -114,12 +115,13 @@ class BuildQuizScreen extends StatefulWidget {
 class _BuildQuizScreenState extends State<BuildQuizScreen> {
   bool quizFinished = false;
 
-  List<String> selectedAnswers = List.filled(5, '');
-
+  // List<String> selectedAnswers = List.filled(5, '');
+  List selectedAnswers = [];
   void onAnswerSelected2(answer) {
+    // create an event object with current timestamp
     setState(() {
-      selectedAnswers[currentQuestionIndex] = answer;
-
+      // selectedAnswers[currentQuestionIndex] = answer;
+      selectedAnswers.add(answer);
       if (currentQuestionIndex == questions.length - 1) {
         quizFinished = true;
       } else {
@@ -182,11 +184,12 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                     minimumSize: MaterialStateProperty.all<Size>(
                         const Size(double.infinity, 50)),
                     elevation: MaterialStateProperty.all(0),
-                    backgroundColor:
-                        selectedAnswers[currentQuestionIndex] == answer
-                            ? MaterialStateProperty.all(Colors.green)
-                            : MaterialStateProperty.all(
-                                const Color.fromARGB(255, 228, 228, 228)),
+                    // backgroundColor:
+                    //     selectedAnswers[currentQuestionIndex] == answer
+                    //         ? MaterialStateProperty.all(Colors.green)
+                    //         : MaterialStateProperty.all(
+                    //             const Color.fromARGB(255, 228, 228, 228)),
+                    backgroundColor: MaterialStateProperty.all(Colors.green),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -227,6 +230,7 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                 setState(() {
                   if (currentQuestionIndex == questions.length - 1) {
                     // quizFinished = true;
+                    print(selectedAnswers);
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: ((context) {
                       return const BuildFinishedScreen();

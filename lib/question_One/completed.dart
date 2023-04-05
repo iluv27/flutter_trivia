@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../q&a/third_screen.dart';
 import '../q&a/quiz_sect.dart';
+import 'question1.dart';
 
 class BuildFinishedScreen extends StatefulWidget {
   const BuildFinishedScreen({super.key});
@@ -12,23 +13,33 @@ class BuildFinishedScreen extends StatefulWidget {
 class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
   int correctAnswersCount = 0;
 
-  List<String> selectedAnswers = List.filled(5, '');
+  // List<String> selectedAnswers = List.filled(5, '');
   bool quizFinished = false;
 
   void onReset() {
     setState(() {
       currentQuestionIndex = 0;
       quizFinished = false;
-      selectedAnswers = List.filled(4, '');
+      // selectedAnswers = List.filled(5, '');
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    for (var i = 0; i < questions.length; i++) {
-      if (correctAnswers.contains(selectedAnswers[i])) {
-        correctAnswersCount++;
-      }
+    for (var answer = 0; answer < questions.length; answer++) {
+      // ignore: avoid_print
+
+      // if (questions[currentQuestionIndex]['correctAnswer'] ==
+      //     selectedAnswers[answer]) {
+      //   correctAnswersCount++;
+      // }
+      // print(questions[answer]['correctAnswer']);
+      // if (questions[currentQuestionIndex]['correctAnswer'] ==
+      //     selectedAnswers[answer]) {
+      //   correctAnswersCount++;
+      // } else {
+      //   correctAnswersCount;
+      // }
     }
     return Scaffold(
         appBar: AppBar(
@@ -96,20 +107,16 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
               ),
             ),
             Positioned(
-              top: 100,
-              left: MediaQuery.of(context).size.width * 0.35,
+              top: 120,
+              left: MediaQuery.of(context).size.width * 0.25,
               child: Column(
                 children: const [
                   Text(
                     'Congrats!',
-                    style: TextStyle(color: Colors.white, fontSize: 30),
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  Text(
-                    'Quiz Results',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 50,
+                        fontFamily: 'Pacifico'),
                   ),
                 ],
               ),
