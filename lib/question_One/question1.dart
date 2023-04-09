@@ -95,7 +95,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         ),
                       ],
                     ),
-                    child: BuildQuizScreen()),
+                    child: const BuildQuizScreen()),
               ),
             ),
           ],
@@ -104,7 +104,7 @@ class _QuizScreenState extends State<QuizScreen> {
 }
 
 class BuildQuizScreen extends StatefulWidget {
-  BuildQuizScreen({
+  const BuildQuizScreen({
     super.key,
   });
 
@@ -230,6 +230,7 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                 setState(() {
                   if (currentQuestionIndex == questions.length - 1) {
                     // quizFinished = true;
+                    // ignore: avoid_print
                     print(selectedAnswers);
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: ((context) {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../q&a/third_screen.dart';
 import '../q&a/quiz_sect.dart';
-import 'question1.dart';
 
 class BuildFinishedScreen extends StatefulWidget {
   const BuildFinishedScreen({super.key});
