@@ -115,24 +115,22 @@ class BuildQuizScreen extends StatefulWidget {
 class _BuildQuizScreenState extends State<BuildQuizScreen> {
   bool quizFinished = false;
 
-  // List<String> selectedAnswers = List.filled(5, '');
-  AnswerSelected answerSelected = AnswerSelected();
+  int correctAnswersCount = 0;
+  final List<String> selectedAnswers = [];
 
-  void onAnswerSelected2(answer) {
+  // List<String> selectedAnswers = List.filled(5, '');
+
+  void onAnswerSelected2(String answer) {
     // create an event object with current timestamp
     setState(() {
       // selectedAnswers[currentQuestionIndex] = answer;
-      answerSelected.selectedAnswers.add(answer);
+      selectedAnswers.add(answer);
 
       // selectedAnswers.add(answer);
       if (currentQuestionIndex == questions.length - 1) {
         quizFinished = true;
       } else {
         MaterialStateProperty.all(Colors.red);
-      }
-
-      if (answer = questions[currentQuestionIndex]['correctAnswer']) {
-        answerSelected.correctAnswersCount++;
       }
     });
   }
@@ -238,15 +236,19 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                   if (currentQuestionIndex == questions.length - 1) {
                     // quizFinished = true;
                     // ignore: avoid_print
-                    print(answerSelected.selectedAnswers);
+                    // print(answerSelected.selectedAnswers);
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: ((context) {
-                      return const BuildFinishedScreen();
+                      return BuildFinishedScreen(
+                        selectedAnswers: selectedAnswers,
+                      );
                     })));
                   } else if (currentQuestionIndex != questions.length) {
                     currentQuestionIndex++;
                   }
                 });
+
+                print(selectedAnswers);
 
                 // onQuizFinished('');
                 // if (currentQuestionIndex == questions.length + 1) {

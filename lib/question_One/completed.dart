@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_trivia/home/first_screen.dart';
+import 'package:flutter_trivia/question_One/question1.dart';
 import '../q&a/third_screen.dart';
 import '../q&a/quiz_sect.dart';
 
 class BuildFinishedScreen extends StatefulWidget {
-  const BuildFinishedScreen({super.key});
+  BuildFinishedScreen({super.key, required this.selectedAnswers});
 
+  List<String>? selectedAnswers;
   @override
   State<BuildFinishedScreen> createState() => _BuildFinishedScreenState();
 }
 
 class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
-  // List<String> selectedAnswers = List.filled(5, '');
-  bool quizFinished = false;
+  int correctAnswersCount = 0;
 
-  AnswerSelected answerSelected = AnswerSelected();
+  bool quizFinished = false;
 
   void onReset() {
     setState(() {
@@ -25,22 +27,16 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // for (var answer = 0; answer < questions.length; answer++) {
-    //   // ignore: avoid_print
+    for (var answer = 0; answer < questions.length; answer++) {
+      // ignore: avoid_print
 
-    //   // if (questions[currentQuestionIndex]['correctAnswer'] ==
-    //   //     answerSelected.selectedAnswers[answer]) {
-    //   //   correctAnswersCount++;
-    //   // }
-    //   // print(questions[answer]['correctAnswer']);
-    //   // if (questions[currentQuestionIndex]['correctAnswer'] ==
-    //   //     selectedAnswers[answer]) {
-    //   //   correctAnswersCount++;
-    //   else {
-    //     correctAnswersCount;
-    //   }
-    // }
-
+      if (questions[answer]['correctAnswer'] ==
+          widget.selectedAnswers![answer]) {
+        correctAnswersCount++;
+      } else {
+        correctAnswersCount;
+      }
+    }
     return Scaffold(
         appBar: AppBar(
           flexibleSpace: Container(
@@ -59,7 +55,10 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
           elevation: 0,
           leading: IconButton(
             onPressed: (() {
-              Navigator.pop(context);
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: ((context) {
+                return const QuizHomeScreen();
+              })));
             }),
             icon: const Icon(
               Icons.arrow_back_ios,
@@ -171,8 +170,7 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
                                 color: const Color.fromARGB(255, 26, 197, 31),
                                 iconData: Icons.check,
                                 quizDecTitle: 'Right',
-                                quizDecScore:
-                                    '${answerSelected.correctAnswersCount}',
+                                quizDecScore: '$correctAnswersCount',
                               ),
                               const P_VerticalDivider(),
                               QuizDec(
@@ -180,7 +178,7 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
                                 iconData: Icons.close,
                                 quizDecTitle: 'Wrong',
                                 quizDecScore:
-                                    '${questions.length - answerSelected.correctAnswersCount}',
+                                    '${questions.length - correctAnswersCount}',
                               ),
                             ],
                           ),
@@ -217,10 +215,12 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              // Navigator.pushReplacement(context,
-                              //     MaterialPageRoute(builder: ((context) {
-                              //   return const BuildQuizScreen();
-                              // })));
+                              widget.selectedAnswers = [];
+                              currentQuestionIndex = 0;
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: ((context) {
+                                return const QuizScreen();
+                              })));
                             },
                             style: ElevatedButton.styleFrom(
                               elevation: 0,
