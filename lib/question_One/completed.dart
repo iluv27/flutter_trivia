@@ -10,10 +10,10 @@ class BuildFinishedScreen extends StatefulWidget {
 }
 
 class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
-  int correctAnswersCount = 0;
-
   // List<String> selectedAnswers = List.filled(5, '');
   bool quizFinished = false;
+
+  AnswerSelected answerSelected = AnswerSelected();
 
   void onReset() {
     setState(() {
@@ -25,21 +25,22 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
 
   @override
   Widget build(BuildContext context) {
-    for (var answer = 0; answer < questions.length; answer++) {
-      // ignore: avoid_print
+    // for (var answer = 0; answer < questions.length; answer++) {
+    //   // ignore: avoid_print
 
-      // if (questions[currentQuestionIndex]['correctAnswer'] ==
-      //     selectedAnswers[answer]) {
-      //   correctAnswersCount++;
-      // }
-      // print(questions[answer]['correctAnswer']);
-      // if (questions[currentQuestionIndex]['correctAnswer'] ==
-      //     selectedAnswers[answer]) {
-      //   correctAnswersCount++;
-      // } else {
-      //   correctAnswersCount;
-      // }
-    }
+    //   // if (questions[currentQuestionIndex]['correctAnswer'] ==
+    //   //     answerSelected.selectedAnswers[answer]) {
+    //   //   correctAnswersCount++;
+    //   // }
+    //   // print(questions[answer]['correctAnswer']);
+    //   // if (questions[currentQuestionIndex]['correctAnswer'] ==
+    //   //     selectedAnswers[answer]) {
+    //   //   correctAnswersCount++;
+    //   else {
+    //     correctAnswersCount;
+    //   }
+    // }
+
     return Scaffold(
         appBar: AppBar(
           flexibleSpace: Container(
@@ -170,7 +171,8 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
                                 color: const Color.fromARGB(255, 26, 197, 31),
                                 iconData: Icons.check,
                                 quizDecTitle: 'Right',
-                                quizDecScore: '$correctAnswersCount',
+                                quizDecScore:
+                                    '${answerSelected.correctAnswersCount}',
                               ),
                               const P_VerticalDivider(),
                               QuizDec(
@@ -178,7 +180,7 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
                                 iconData: Icons.close,
                                 quizDecTitle: 'Wrong',
                                 quizDecScore:
-                                    '${questions.length - correctAnswersCount}',
+                                    '${questions.length - answerSelected.correctAnswersCount}',
                               ),
                             ],
                           ),

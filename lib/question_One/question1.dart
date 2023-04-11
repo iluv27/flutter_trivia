@@ -116,16 +116,23 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
   bool quizFinished = false;
 
   // List<String> selectedAnswers = List.filled(5, '');
-  List selectedAnswers = [];
+  AnswerSelected answerSelected = AnswerSelected();
+
   void onAnswerSelected2(answer) {
     // create an event object with current timestamp
     setState(() {
       // selectedAnswers[currentQuestionIndex] = answer;
-      selectedAnswers.add(answer);
+      answerSelected.selectedAnswers.add(answer);
+
+      // selectedAnswers.add(answer);
       if (currentQuestionIndex == questions.length - 1) {
         quizFinished = true;
       } else {
         MaterialStateProperty.all(Colors.red);
+      }
+
+      if (answer = questions[currentQuestionIndex]['correctAnswer']) {
+        answerSelected.correctAnswersCount++;
       }
     });
   }
@@ -231,7 +238,7 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                   if (currentQuestionIndex == questions.length - 1) {
                     // quizFinished = true;
                     // ignore: avoid_print
-                    print(selectedAnswers);
+                    print(answerSelected.selectedAnswers);
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: ((context) {
                       return const BuildFinishedScreen();

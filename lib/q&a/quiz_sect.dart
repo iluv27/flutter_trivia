@@ -1,5 +1,12 @@
 int currentQuestionIndex = 0;
 
+class AnswerSelected {
+  int correctAnswersCount = 0;
+  final List<String> selectedAnswers = [];
+
+  AnswerSelected();
+}
+
 List<Map<String, dynamic>> questions = [
   {
     'question': 'What is the meaning of Flutter?',
