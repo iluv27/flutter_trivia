@@ -183,13 +183,6 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
                             ],
                           ),
                         ),
-                        // Text(
-                        //   'You answered $correctAnswersCount out of ${questions.length} questions correctly.',
-                        //   style: const TextStyle(
-                        //     fontSize: 18.0,
-                        //     fontWeight: FontWeight.bold,
-                        //   ),
-                        // ),
                         const SizedBox(height: 15.0),
                         const Divider(
                           height: 10,
@@ -219,7 +212,7 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
                               currentQuestionIndex = 0;
                               Navigator.pushReplacement(context,
                                   MaterialPageRoute(builder: ((context) {
-                                return const QuizScreen();
+                                return QuizScreen();
                               })));
                             },
                             style: ElevatedButton.styleFrom(

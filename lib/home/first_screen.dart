@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_trivia/q&a/quiz_sect.dart';
 import 'package:flutter_trivia/question_One/question1.dart';
 import 'package:flutter_trivia/q&a/third_screen.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
@@ -123,9 +124,10 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                     ),
                     child: ElevatedButton(
                       onPressed: (() {
+                        currentQuestionIndex = 0;
                         Navigator.push(context,
                             MaterialPageRoute(builder: ((context) {
-                          return const QuizScreen();
+                          return QuizScreen();
                         })));
                       }),
                       style: ButtonStyle(

@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import '../q&a/third_screen.dart';
 import '../q&a/quiz_sect.dart';
 import 'completed.dart';
+import 'package:flutter_trivia/home/first_screen.dart';
 
+// ignore: must_be_immutable
 class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
+  QuizScreen({super.key});
+
+  List<String> selectedAnswers = [];
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -32,7 +36,12 @@ class _QuizScreenState extends State<QuizScreen> {
           elevation: 0,
           leading: IconButton(
             onPressed: (() {
-              Navigator.pop(context);
+              widget.selectedAnswers = [];
+              currentQuestionIndex = 0;
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: ((context) {
+                return const QuizHomeScreen();
+              })));
             }),
             icon: const Icon(
               Icons.arrow_back_ios,
@@ -95,7 +104,9 @@ class _QuizScreenState extends State<QuizScreen> {
                         ),
                       ],
                     ),
-                    child: const BuildQuizScreen()),
+                    child: BuildQuizScreen(
+                      selectedAnswers: widget.selectedAnswers,
+                    )),
               ),
             ),
           ],
@@ -104,10 +115,8 @@ class _QuizScreenState extends State<QuizScreen> {
 }
 
 class BuildQuizScreen extends StatefulWidget {
-  const BuildQuizScreen({
-    super.key,
-  });
-
+  const BuildQuizScreen({super.key, required this.selectedAnswers});
+  final List<String> selectedAnswers;
   @override
   State<BuildQuizScreen> createState() => _BuildQuizScreenState();
 }
@@ -116,7 +125,6 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
   bool quizFinished = false;
 
   int correctAnswersCount = 0;
-  final List<String> selectedAnswers = [];
 
   // List<String> selectedAnswers = List.filled(5, '');
 
@@ -124,7 +132,7 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
     // create an event object with current timestamp
     setState(() {
       // selectedAnswers[currentQuestionIndex] = answer;
-      selectedAnswers.add(answer);
+      widget.selectedAnswers.add(answer);
 
       // selectedAnswers.add(answer);
       if (currentQuestionIndex == questions.length - 1) {
@@ -240,7 +248,7 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: ((context) {
                       return BuildFinishedScreen(
-                        selectedAnswers: selectedAnswers,
+                        selectedAnswers: widget.selectedAnswers,
                       );
                     })));
                   } else if (currentQuestionIndex != questions.length) {
@@ -248,7 +256,7 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                   }
                 });
 
-                print(selectedAnswers);
+                print(widget.selectedAnswers);
 
                 // onQuizFinished('');
                 // if (currentQuestionIndex == questions.length + 1) {
