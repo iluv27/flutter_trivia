@@ -1,34 +1,113 @@
 int currentQuestionIndex = 0;
 
-List<Map<String, dynamic>> questions1 = [
-  {
-    'question': 'What is the meaning of Flutter?',
-    'answers': ['Paris', 'New York City', 'London', 'Barcelona'],
-    'correctAnswer': 'Paris'
-  },
-  {
-    'question': 'What is the capital city of Japan?',
-    'answers': ['Tokyo', 'Dubai', 'Los Angeles', 'Moscow'],
-    'correctAnswer': 'Dubai'
-  },
-  {
-    'question': 'What is the capital city of the United Arab Emirates?',
-    'answers': ['Dubai', 'Hong Kong', 'Singapore', 'Paris'],
-    'correctAnswer': 'Singapore'
-  },
-  {
-    'question': 'What is the capital city of China?',
-    'answers': ['Hong Kong', 'Moscow', 'Barcelona', 'New York City'],
-    'correctAnswer': 'Moscow'
-  },
-  {
-    'question': 'What is the capital city of China?',
-    'answers': ['Hong Kong', 'Moscow', 'Barcelona', 'New York City'],
-    'correctAnswer': 'New York City'
-  }
-];
-
 List<Map<String, dynamic>> questions = [
+  {
+    'question': 'What is Flutter?',
+    'answers': [
+      'A mobile app development framework',
+      'A social media platform',
+      'A new programming language',
+      'A video game'
+    ],
+    'correctAnswer': 'A mobile app development framework'
+  },
+  {
+    'question':
+        'What is the name of the Flutter widget used for building responsive layouts?',
+    'answers': ['GridView', 'ListView', 'Wrap', 'Row'],
+    'correctAnswer': 'Wrap'
+  },
+  {
+    'question':
+        'What is the name of the package used for building responsive layouts in Flutter?',
+    'answers': [
+      'responsive_layout',
+      'flutter_responsive',
+      'flutter_layout',
+      'flutter_screenutil'
+    ],
+    'correctAnswer': 'flutter_screenutil'
+  },
+  {
+    'question':
+        'Which widget can be used to specify a percentage-based width in Flutter?',
+    'answers': ['Expanded', 'Flexible', 'SizedBox', 'AspectRatio'],
+    'correctAnswer': 'Expanded'
+  },
+  {
+    'question':
+        'What is the name of the Flutter widget used for building responsive dialogs?',
+    'answers': [
+      'AlertDialog',
+      'SimpleDialog',
+      'CustomDialog',
+      'ResponsiveDialog'
+    ],
+    'correctAnswer': 'AlertDialog'
+  },
+  {
+    'question':
+        'Which package can be used for building adaptive layouts in Flutter?',
+    'answers': [
+      'flutter_adaptive',
+      'adaptive_layout',
+      'flutter_adaptive_layout',
+      'flutter_layout_builder'
+    ],
+    'correctAnswer': 'flutter_adaptive_layout'
+  },
+  {
+    'question':
+        'What is the most common screen size used for mobile devices in Flutter development?',
+    'answers': ['360x640', '1080x1920', '1440x2960', '750x1334'],
+    'CorrectAnswer': '360x640'
+  },
+  {
+    'question': 'What is the purpose of the Spacer widget in Flutter?',
+    'answers': [
+      'To add padding to a widget',
+      'To create a flexible space between widgets',
+      'To add margin to a widget',
+      'None of the above'
+    ],
+    'correctAnswer': 'To create a flexible space between widgets'
+  },
+  {
+    'question': 'What is a MediaQuery in Flutter?',
+    'answers': ['A widget', 'A class', 'A package', 'A plugin'],
+    'correctAnswer': 'A class'
+  },
+  {
+    'question': 'What is the purpose of a Flexible widget in Flutter?',
+    'answers': [
+      'To make a widget draggable',
+      'To change the size of a widget based on available space',
+      'To add a margin to a widget',
+      'To add padding to a widget'
+    ],
+    'correctAnswer': 'To change the size of a widget based on available space'
+  },
+  {
+    'question': 'What is the purpose of a SafeArea widget in Flutter?',
+    'answers': [
+      'To add padding to a widget',
+      'To make a widget scrollable',
+      'To ensure a widget is not hidden behind system UI elements',
+      'To create a responsive layout'
+    ],
+    'correctAnswer':
+        'To ensure a widget is not hidden behind system UI elements'
+  },
+  {
+    'question': 'What is the purpose of a LayoutBuilder widget in Flutter?',
+    'answers': [
+      'To create a responsive layout',
+      'To add a margin to a widget',
+      'To make a widget draggable',
+      'To change the size of a widget based on available space'
+    ],
+    'correctAnswer': 'To create a responsive layout'
+  },
   {
     'question': 'What is a responsive design in Flutter?',
     'answers': [
@@ -40,70 +119,66 @@ List<Map<String, dynamic>> questions = [
     'correctAnswer': 'A design that adjusts to fit any screen size'
   },
   {
-    'question': 'What is the purpose of MediaQuery in Flutter?',
+    'question': 'What is the purpose of a Expanded widget in Flutter?',
     'answers': [
-      'To get information about the device screen size and orientation',
-      'To get information about the device battery level',
-      'To get information about the device camera',
-      'To get information about the device location'
+      'To add padding to a widget',
+      'To make a widget draggable',
+      'To change the size of a widget based on available space',
+      'To create a responsive layout'
     ],
-    'correctAnswer':
-        'To get information about the device screen size and orientation'
+    'correctAnswer': 'To change the size of a widget based on available space'
   },
   {
     'question':
-        'What is the difference between MainAxisAlignment and CrossAxisAlignment in Flutter?',
+        'What is the purpose of a SingleChildScrollView widget in Flutter?',
     'answers': [
-      'MainAxisAlignment controls the vertical positioning of widgets, while CrossAxisAlignment controls the horizontal positioning of widgets',
-      'CrossAxisAlignment controls the vertical positioning of widgets, while MainAxisAlignment controls the horizontal positioning of widgets',
-      'MainAxisAlignment and CrossAxisAlignment both control the vertical positioning of widgets',
-      'MainAxisAlignment and CrossAxisAlignment both control the horizontal positioning of widgets'
+      'To make a widget scrollable',
+      'To add padding to a widget',
+      'To create a responsive layout',
+      'To change the size of a widget based on available space'
     ],
-    'correctAnswer':
-        'MainAxisAlignment controls the vertical positioning of widgets, while CrossAxisAlignment controls the horizontal positioning of widgets'
-  },
-  {
-    'question': 'What is a Flexible widget in Flutter?',
-    'answers': [
-      'A widget that allows its children to have flexible widths or heights',
-      'A widget that allows its children to have fixed widths or heights',
-      'A widget that allows its children to be positioned anywhere on the screen',
-      'A widget that allows its children to have different colors'
-    ],
-    'correctAnswer':
-        'A widget that allows its children to have flexible widths or heights'
-  },
-  {
-    'question': 'What is a LayoutBuilder widget in Flutter?',
-    'answers': [
-      'A widget that provides information about the constraints passed to its parent',
-      'A widget that provides information about the device screen size and orientation',
-      'A widget that provides information about the device battery level',
-      'A widget that provides information about the device location'
-    ],
-    'correctAnswer':
-        'A widget that provides information about the constraints passed to its parent'
-  },
-  {
-    'question': 'What is a Wrap widget in Flutter?',
-    'answers': [
-      'A widget that lays out its children in a wrap fashion',
-      'A widget that lays out its children in a column',
-      'A widget that lays out its children in a row',
-      'A widget that lays out its children in a grid'
-    ],
-    'correctAnswer': 'A widget that lays out its children in a wrap fashion'
+    'correctAnswer': 'To make a widget scrollable'
   },
   {
     'question':
-        'What is the difference between Expanded and Flexible widgets in Flutter?',
+        'What is the purpose of a MediaQuery.of(context).size in Flutter?',
     'answers': [
-      'Expanded widgets take up all the available space in the main axis, while Flexible widgets only take up the space they need',
-      'Flexible widgets take up all the available space in the main axis, while Expanded widgets only take up the space they need',
-      'Expanded widgets take up all the available space in both the main and cross axes, while Flexible widgets only take up the space they need in the main axis',
-      'Flexible widgets take up all the available space in both the main and cross axes, while Expanded widgets only take up the space they need in the main axis'
+      'To get the size of the device screen',
+      'To get the size of a widget',
+      'To create a responsive layout',
+      'To make a widget scrollable'
     ],
-    'correctAnswer':
-        'Expanded widgets take up all the available space in the main axis, while Flexible widgets only take up the space they need'
+    'correctAnswer': 'To get the size of the device screen'
   },
+  {
+    'question': 'What is the purpose of a IntrinsicWidth widget in Flutter?',
+    'answers': [
+      'To make a widget draggable',
+      'To change the size of a widget based on available space',
+      'To ensure a widget has a minimum width',
+      'To add padding to a widget'
+    ],
+    'correctAnswer': 'To ensure a widget has a minimum width'
+  },
+  {
+    'question': 'What is the purpose of a SizedBox widget in Flutter?',
+    'answers': [
+      'To create a fixed size box',
+      'To make a widget draggable',
+      'To change the size of a widget based on available space',
+      'To ensure a widget has a minimum width'
+    ],
+    'correctAnswer': 'To create a fixed size box'
+  },
+  {
+    'question':
+        'What is the purpose of a FractionallySizedBox widget in Flutter?',
+    'answers': [
+      'To make a widget draggable',
+      'To create a fixed size box',
+      'To ensure a widget has a minimum width',
+      'To change the size of a widget based on available space'
+    ],
+    'correctAnswer': 'To change the size of a widget'
+  }
 ];
