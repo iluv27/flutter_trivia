@@ -202,7 +202,8 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                     //         ? MaterialStateProperty.all(Colors.green)
                     //         : MaterialStateProperty.all(
                     //             const Color.fromARGB(255, 228, 228, 228)),
-                    backgroundColor: MaterialStateProperty.all(Colors.green),
+                    backgroundColor: MaterialStateProperty.all(
+                        const Color.fromARGB(255, 228, 228, 228)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
