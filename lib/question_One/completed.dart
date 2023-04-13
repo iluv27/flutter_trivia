@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_trivia/home/first_screen.dart';
 import 'package:flutter_trivia/question_One/question1.dart';

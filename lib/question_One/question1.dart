@@ -257,6 +257,7 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                   }
                 });
 
+                // ignore: avoid_print
                 print(widget.selectedAnswers);
 
                 // onQuizFinished('');
