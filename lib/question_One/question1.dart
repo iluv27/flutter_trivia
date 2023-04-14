@@ -92,7 +92,7 @@ class _QuizScreenState extends State<QuizScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 50.0, left: 15, right: 15),
                 child: Container(
-                    height: 530,
+                    height: 550,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.white,
@@ -122,24 +122,68 @@ class BuildQuizScreen extends StatefulWidget {
 }
 
 class _BuildQuizScreenState extends State<BuildQuizScreen> {
-  bool quizFinished = false;
+  bool _isButtonEnabled = false;
 
-  int correctAnswersCount = 0;
+  final Gradient _disabledButtonColor = const LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color.fromARGB(164, 69, 28, 181),
+      Color.fromARGB(162, 233, 107, 255),
+    ],
+  );
+
+  final Gradient _enabledButtonColor = const LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color.fromARGB(255, 69, 28, 181),
+      Color.fromARGB(255, 233, 107, 255),
+    ],
+  );
+
+  MaterialStateProperty<Color> buttonSelectedColor(answer) {
+    setState(() {
+      if (questions[currentQuestionIndex]['correctAnswer'] == answer) {
+        MaterialStateProperty.all(Colors.green);
+      } else if (questions[currentQuestionIndex]['correctAnswer'] == answer) {
+        MaterialStateProperty.all(Colors.red);
+      }
+    });
+    return MaterialStateProperty.all(const Color.fromARGB(255, 228, 228, 228));
+  }
+
+  void answerCorrection() {
+    setState(() {
+      if (currentQuestionIndex == questions.length - 1) {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: ((context) {
+          return BuildFinishedScreen(
+            selectedAnswers: widget.selectedAnswers,
+          );
+        })));
+      } else if (currentQuestionIndex != questions.length) {
+        currentQuestionIndex++;
+      }
+      _isButtonEnabled = false;
+    });
+    // ignore: avoid_print
+    print(widget.selectedAnswers);
+  }
+
+  void _buttonEnabled() {
+    setState(() {
+      _isButtonEnabled ? answerCorrection() : null;
+    });
+  }
 
   // List<String> selectedAnswers = List.filled(5, '');
 
   void onAnswerSelected2(String answer) {
-    // create an event object with current timestamp
     setState(() {
+      _isButtonEnabled = true;
       // selectedAnswers[currentQuestionIndex] = answer;
       widget.selectedAnswers.add(answer);
-
-      // selectedAnswers.add(answer);
-      if (currentQuestionIndex == questions.length - 1) {
-        quizFinished = true;
-      } else {
-        MaterialStateProperty.all(Colors.red);
-      }
     });
   }
 
@@ -167,7 +211,7 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                     child: CircularProgressIndicator(
                       backgroundColor: const Color.fromARGB(92, 99, 216, 99),
                       value: currentQuestionIndex / (questions.length - 1),
-                      strokeWidth: 4,
+                      strokeWidth: 4.5,
                       valueColor: const AlwaysStoppedAnimation<Color>(
                           Color.fromARGB(255, 99, 216, 99)),
                     ),
@@ -175,47 +219,58 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.only(left: 30, right: 30),
-              child: Text(
-                questions[currentQuestionIndex]['question'],
-                style: const TextStyle(
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  questions[currentQuestionIndex]['question'],
+                  style: const TextStyle(
+                    height: 1.4,
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
-                    color: Color.fromARGB(169, 0, 0, 0)),
+                    color: Color.fromARGB(169, 0, 0, 0),
+                  ),
+                ),
               ),
             ),
             for (var answer in questions[currentQuestionIndex]['answers'])
               Padding(
                 padding: const EdgeInsets.only(top: 16, left: 30, right: 30),
                 child: ElevatedButton(
-                  onPressed: (() {
+                  onPressed: () {
                     onAnswerSelected2(answer);
-                  }),
+                  },
                   style: ButtonStyle(
                     minimumSize: MaterialStateProperty.all<Size>(
-                        const Size(double.infinity, 50)),
+                        const Size(double.infinity, 60)),
                     elevation: MaterialStateProperty.all(0),
-                    // backgroundColor:
-                    //     selectedAnswers[currentQuestionIndex] == answer
-                    //         ? MaterialStateProperty.all(Colors.green)
-                    //         : MaterialStateProperty.all(
-                    //             const Color.fromARGB(255, 228, 228, 228)),
-                    backgroundColor: MaterialStateProperty.all(
-                        const Color.fromARGB(255, 228, 228, 228)),
+                    backgroundColor:
+                        widget.selectedAnswers[currentQuestionIndex] ==
+                                questions[currentQuestionIndex]['answers']
+                            ? MaterialStateProperty.all<Color>(Colors.green)
+                            : MaterialStateProperty.all<Color>(Colors.grey),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
                   ),
-                  child: Text(
-                    answer,
-                    style: const TextStyle(
-                        color: Color.fromARGB(227, 41, 38, 38),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 10),
+                      child: Text(
+                        answer,
+                        style: const TextStyle(
+                            height: 1.4,
+                            color: Color.fromARGB(227, 41, 38, 38),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -224,56 +279,30 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
         Positioned(
           bottom: 0,
           child: Container(
-            decoration: const ShapeDecoration(
-              shape: RoundedRectangleBorder(
+            decoration: ShapeDecoration(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(18),
                     bottomRight: Radius.circular(18)),
               ),
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color.fromARGB(255, 69, 28, 181),
-                  Color.fromARGB(255, 233, 107, 255),
-                ],
-              ),
+              gradient:
+                  _isButtonEnabled ? _enabledButtonColor : _disabledButtonColor,
             ),
             child: ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  if (currentQuestionIndex == questions.length - 1) {
-                    // quizFinished = true;
-                    // ignore: avoid_print
-                    // print(answerSelected.selectedAnswers);
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: ((context) {
-                      return BuildFinishedScreen(
-                        selectedAnswers: widget.selectedAnswers,
-                      );
-                    })));
-                  } else if (currentQuestionIndex != questions.length) {
-                    currentQuestionIndex++;
-                  }
-                });
-
-                // ignore: avoid_print
-                print(widget.selectedAnswers);
-
-                // onQuizFinished('');
-                // if (currentQuestionIndex == questions.length + 1) {
-                //   quizFinished = true;
-
-                // } else {}
-              },
-              style: ElevatedButton.styleFrom(
-                elevation: 0,
-                minimumSize: const Size(384, 60),
-                backgroundColor: Colors.transparent,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(18),
-                      bottomRight: Radius.circular(18)),
+              onPressed: _buttonEnabled,
+              style: ButtonStyle(
+                enableFeedback: _isButtonEnabled,
+                elevation: MaterialStateProperty.all<double>(0),
+                minimumSize:
+                    MaterialStateProperty.all<Size>(const Size(384, 60)),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.transparent),
+                shape: MaterialStateProperty.all<OutlinedBorder>(
+                  const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(18),
+                        bottomRight: Radius.circular(18)),
+                  ),
                 ),
               ),
               child: const Text(

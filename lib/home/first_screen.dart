@@ -25,12 +25,13 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
           gradientEnd: Colors.purple,
         ),
         backgroundColor: Colors.white,
-        body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
-          child: Stack(
-            children: [
-              //THE TOP CARD
-              Align(
+        body: Stack(
+          children: [
+            //THE TOP CARD
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
+              child: Align(
                 alignment: Alignment.topCenter,
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.9,
@@ -82,7 +83,7 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                         ),
                         Positioned(
                           bottom: 20,
-                          left: 160,
+                          left: MediaQuery.of(context).size.width * 0.4,
                           child: Image.asset(
                             'images/dash1.png',
                             scale: 3,
@@ -93,18 +94,25 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                   ),
                 ),
               ),
-              Positioned(
-                height: MediaQuery.of(context).size.height * 0.52,
-                width: MediaQuery.of(context).size.width,
-                top: 190,
-                child: const Padding(
-                  padding: EdgeInsets.only(left: 10.0, right: 25),
-                  child: PietPainting(),
-                ),
+            ),
+            Positioned(
+              height: MediaQuery.of(context).size.height * 0.52,
+              width: MediaQuery.of(context).size.width,
+              bottom: 90,
+              child: const Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20),
+                child: PietPainting(),
               ),
+            ),
 
-              Align(
-                  alignment: Alignment.bottomCenter,
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                color: Colors.white,
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 15.0, horizontal: 17),
                   child: Container(
                     decoration: const ShapeDecoration(
                       shape: RoundedRectangleBorder(
@@ -132,7 +140,7 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                       }),
                       style: ButtonStyle(
                         minimumSize: MaterialStateProperty.all<Size>(
-                            Size(MediaQuery.of(context).size.width * 0.85, 55)),
+                            Size(MediaQuery.of(context).size.width * 0.9, 55)),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
@@ -151,9 +159,11 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                             wordSpacing: 1),
                       ),
                     ),
-                  )),
-            ],
-          ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -189,7 +199,7 @@ class ShortCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(0.2),
               blurRadius: 5,
               spreadRadius: 1,
               offset: const Offset(0, 2),
