@@ -10,7 +10,7 @@ List<Map<String, dynamic>> questions = [
       'A new programming language',
       'A video game'
     ],
-    'correctAnswer': 'A mobile app development framework'
+    'correctAnswer': 'A mobile app development framework',
   },
   {
     'question':

@@ -123,6 +123,7 @@ class BuildQuizScreen extends StatefulWidget {
 
 class _BuildQuizScreenState extends State<BuildQuizScreen> {
   bool _isButtonEnabled = false;
+  //bool _buttonSelected = false;
 
   final Gradient _disabledButtonColor = const LinearGradient(
     begin: Alignment.topCenter,
@@ -141,17 +142,6 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
       Color.fromARGB(255, 233, 107, 255),
     ],
   );
-
-  MaterialStateProperty<Color> buttonSelectedColor(answer) {
-    setState(() {
-      if (questions[currentQuestionIndex]['correctAnswer'] == answer) {
-        MaterialStateProperty.all(Colors.green);
-      } else if (questions[currentQuestionIndex]['correctAnswer'] == answer) {
-        MaterialStateProperty.all(Colors.red);
-      }
-    });
-    return MaterialStateProperty.all(const Color.fromARGB(255, 228, 228, 228));
-  }
 
   void answerCorrection() {
     setState(() {
@@ -177,13 +167,23 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
     });
   }
 
+  int answerIndex = -1;
+
+  String? selectedAnswer;
+
   // List<String> selectedAnswers = List.filled(5, '');
+  MaterialStateProperty<Color> bgBlue =
+      MaterialStateProperty.all(Colors.yellow);
 
   void onAnswerSelected2(String answer) {
     setState(() {
       _isButtonEnabled = true;
-      // selectedAnswers[currentQuestionIndex] = answer;
-      widget.selectedAnswers.add(answer);
+      if (widget.selectedAnswers.isNotEmpty && selectedAnswer == answer) {
+        widget.selectedAnswers[widget.selectedAnswers.length - 1] = answer;
+      } else {
+        widget.selectedAnswers.add(answer);
+      }
+      selectedAnswer = widget.selectedAnswers.last;
     });
   }
 
@@ -246,11 +246,11 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                     minimumSize: MaterialStateProperty.all<Size>(
                         const Size(double.infinity, 60)),
                     elevation: MaterialStateProperty.all(0),
-                    backgroundColor:
-                        widget.selectedAnswers[currentQuestionIndex] ==
-                                questions[currentQuestionIndex]['answers']
-                            ? MaterialStateProperty.all<Color>(Colors.green)
-                            : MaterialStateProperty.all<Color>(Colors.grey),
+                    backgroundColor: selectedAnswer == answer
+                        ? MaterialStateProperty.all(
+                            Color.fromARGB(255, 83, 49, 222))
+                        : MaterialStateProperty.all(
+                            Color.fromARGB(255, 214, 214, 214)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -264,9 +264,11 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                           vertical: 8.0, horizontal: 10),
                       child: Text(
                         answer,
-                        style: const TextStyle(
+                        style: TextStyle(
                             height: 1.4,
-                            color: Color.fromARGB(227, 41, 38, 38),
+                            color: selectedAnswer == answer
+                                ? Colors.white
+                                : Color.fromARGB(227, 41, 38, 38),
                             fontSize: 18,
                             fontWeight: FontWeight.w500),
                       ),
