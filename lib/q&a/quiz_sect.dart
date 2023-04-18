@@ -1241,3 +1241,136 @@ List<Map<String, dynamic>> questionsFlutterUI = [
     'correctAnswer': 'all of the above'
   }
 ];
+
+List<Map<String, dynamic>> questionsScrollableViews = [
+  {
+    'question': 'What is a ListView in Flutter?',
+    'answers': [
+      'A widget that displays a scrollable list of items',
+      'A class that allows you to navigate between screens',
+      'A package for managing state in Flutter apps',
+      'A design pattern for building user interfaces'
+    ],
+    'correctAnswer': 'A widget that displays a scrollable list of items',
+  },
+  {
+    'question': 'What is a SingleChildScrollView in Flutter?',
+    'answers': [
+      'A widget that displays a single child and allows you to scroll it',
+      'A package for managing state in Flutter apps',
+      'A design pattern for building user interfaces',
+      'A class that allows you to navigate between screens'
+    ],
+    'correctAnswer':
+        'A widget that displays a single child and allows you to scroll it',
+  },
+  {
+    'question': 'What is a CustomScrollView in Flutter?',
+    'answers': [
+      'A widget that can combine multiple scrollable widgets into a single scroll view',
+      'A package for managing state in Flutter apps',
+      'A class that allows you to navigate between screens',
+      'A design pattern for building user interfaces'
+    ],
+    'correctAnswer':
+        'A widget that can combine multiple scrollable widgets into a single scroll view',
+  },
+  {
+    'question': 'What is a GridView in Flutter?',
+    'answers': [
+      'A widget that displays a collection of items in a grid format',
+      'A class that allows you to navigate between screens',
+      'A package for managing state in Flutter apps',
+      'A design pattern for building user interfaces'
+    ],
+    'correctAnswer':
+        'A widget that displays a collection of items in a grid format',
+  },
+  {
+    'question': 'What is a CustomScrollView sliver in Flutter?',
+    'answers': [
+      'A widget that can be used to create custom scroll effects',
+      'A class that allows you to navigate between screens',
+      'A package for managing state in Flutter apps',
+      'A design pattern for building user interfaces'
+    ],
+    'correctAnswer':
+        'A widget that can be used to create custom scroll effects',
+  },
+  {
+    'question': 'What is a SliverAppBar in Flutter?',
+    'answers': [
+      'A widget that provides a material design app bar that can be scrolled away',
+      'A package for managing state in Flutter apps',
+      'A class that allows you to navigate between screens',
+      'A design pattern for building user interfaces'
+    ],
+    'correctAnswer':
+        'A widget that provides a material design app bar that can be scrolled away',
+  },
+  {
+    'question': 'What is a NestedScrollView in Flutter?',
+    'answers': [
+      'A widget that can be used to create a scroll view with a flexible header and body',
+      'A package for managing state in Flutter apps',
+      'A design pattern for building user interfaces',
+      'A class that allows you to navigate between screens'
+    ],
+    'correctAnswer':
+        'A widget that can be used to create a scroll view with a flexible header and body',
+  },
+  {
+    'question': 'What is a ScrollController in Flutter?',
+    'answers': [
+      'A class that can be used to control the position of a scroll view',
+      'A package for managing state in Flutter apps',
+      'A design pattern for building user interfaces',
+      'A widget that displays a scrollable list of items'
+    ],
+    'correctAnswer':
+        'A class that can be used to control the position of a scroll view'
+  },
+  {
+    'question': 'What is the purpose of the GestureDetector widget?',
+    'answers': [
+      'To detect user gestures such as taps and swipes',
+      'To provide a layout for widgets',
+      'To handle user input with forms',
+      'To create animations'
+    ],
+    'correctAnswer': 'To detect user gestures such as taps and swipes'
+  },
+  {
+    'question':
+        'What is the difference between a StatelessWidget and a StatefulWidget?',
+    'answers': [
+      'A StatelessWidget can be updated, but a StatefulWidget cannot',
+      'A StatefulWidget is used for more complex UI layouts',
+      'A StatelessWidget is used for more complex UI layouts',
+      'A StatefulWidget can be updated, but a StatelessWidget cannot'
+    ],
+    'correctAnswer':
+        'A StatefulWidget can be updated, but a StatelessWidget cannot'
+  },
+  {
+    'question': 'What is the purpose of the SizedBox widget?',
+    'answers': [
+      'To create a fixed size box for layout purposes',
+      'To create a scrollable area for content',
+      'To provide padding around other widgets',
+      'To display an icon or image'
+    ],
+    'correctAnswer': 'To create a fixed size box for layout purposes'
+  },
+  {
+    'question': 'What is the purpose of the Positioned widget?',
+    'answers': [
+      'To position a widget relative to the top, bottom, left, or right edge of its parent',
+      'To provide a layout for widgets',
+      'To handle user input with forms',
+      'To create animations'
+    ],
+    'correctAnswer':
+        'To position a widget relative to the top, bottom, left, or right edge of its parent'
+  },
+];

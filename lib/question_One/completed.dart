@@ -7,9 +7,16 @@ import '../q&a/third_screen.dart';
 import '../q&a/quiz_sect.dart';
 
 class BuildFinishedScreen extends StatefulWidget {
-  BuildFinishedScreen({super.key, required this.selectedAnswers});
+  BuildFinishedScreen(
+      {super.key,
+      required this.selectedAnswers,
+      required this.questionQuestion,
+      required this.questionTitle});
 
   List<String>? selectedAnswers;
+  String questionTitle;
+  final List<Map<String, dynamic>> questionQuestion;
+
   @override
   State<BuildFinishedScreen> createState() => _BuildFinishedScreenState();
 }
@@ -29,16 +36,17 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
 
   @override
   Widget build(BuildContext context) {
-    for (var answer = 0; answer < questions.length; answer++) {
+    for (var answer = 0; answer < widget.questionQuestion.length; answer++) {
       // ignore: avoid_print
 
-      if (questions[answer]['correctAnswer'] ==
+      if (widget.questionQuestion[answer]['correctAnswer'] ==
           widget.selectedAnswers![answer]) {
         correctAnswersCount++;
       } else {
         correctAnswersCount;
       }
     }
+
     return Scaffold(
         appBar: AppBar(
           flexibleSpace: Container(
@@ -165,7 +173,8 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
                                 color: Colors.blueGrey,
                                 iconData: Icons.grade,
                                 quizDecTitle: 'Total',
-                                quizDecScore: '${questions.length}',
+                                quizDecScore:
+                                    '${widget.questionQuestion.length}',
                               ),
                               const P_VerticalDivider(),
                               QuizDec(
@@ -180,7 +189,7 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
                                 iconData: Icons.close,
                                 quizDecTitle: 'Wrong',
                                 quizDecScore:
-                                    '${questions.length - correctAnswersCount}',
+                                    '${widget.questionQuestion.length - correctAnswersCount}',
                               ),
                             ],
                           ),
@@ -214,7 +223,10 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
                               currentQuestionIndex = 0;
                               Navigator.pushReplacement(context,
                                   MaterialPageRoute(builder: ((context) {
-                                return QuizScreen();
+                                return QuizScreen(
+                                  questionTitle: widget.questionTitle,
+                                  questionQuestion: widget.questionQuestion,
+                                );
                               })));
                             },
                             style: ElevatedButton.styleFrom(

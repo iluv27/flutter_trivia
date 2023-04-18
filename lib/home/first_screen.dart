@@ -135,7 +135,10 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                         currentQuestionIndex = 0;
                         Navigator.push(context,
                             MaterialPageRoute(builder: ((context) {
-                          return QuizScreen();
+                          return QuizScreen(
+                            questionTitle: 'Responsive Screens',
+                            questionQuestion: questionsFlutter,
+                          );
                         })));
                       }),
                       style: ButtonStyle(

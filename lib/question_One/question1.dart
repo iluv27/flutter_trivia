@@ -6,9 +6,13 @@ import 'package:flutter_trivia/home/first_screen.dart';
 
 // ignore: must_be_immutable
 class QuizScreen extends StatefulWidget {
-  QuizScreen({super.key});
+  QuizScreen(
+      {super.key, required this.questionTitle, required this.questionQuestion});
 
   List<String> selectedAnswers = [];
+  final List<Map<String, dynamic>> questionQuestion;
+
+  String questionTitle;
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -52,11 +56,11 @@ class _QuizScreenState extends State<QuizScreen> {
             padding: const EdgeInsets.only(left: 20.0),
           ),
           leadingWidth: 40,
-          title: const Center(
+          title: Center(
             child: Text(
-              'Stateful Widgets',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+              widget.questionTitle,
+              style: const TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.w700),
             ),
           ),
         ),
@@ -101,6 +105,8 @@ class _QuizScreenState extends State<QuizScreen> {
                     ),
                     child: BuildQuizScreen(
                       selectedAnswers: widget.selectedAnswers,
+                      questionQuestion: widget.questionQuestion,
+                      questionTitle: widget.questionTitle,
                     )),
               ),
             ),
@@ -110,8 +116,14 @@ class _QuizScreenState extends State<QuizScreen> {
 }
 
 class BuildQuizScreen extends StatefulWidget {
-  const BuildQuizScreen({super.key, required this.selectedAnswers});
+  const BuildQuizScreen(
+      {super.key,
+      required this.selectedAnswers,
+      required this.questionQuestion,
+      required this.questionTitle});
   final List<String> selectedAnswers;
+  final List<Map<String, dynamic>> questionQuestion;
+  final String questionTitle;
   @override
   State<BuildQuizScreen> createState() => _BuildQuizScreenState();
 }
@@ -139,14 +151,16 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
 
   void answerCorrection() {
     setState(() {
-      if (currentQuestionIndex == questions.length - 1) {
+      if (currentQuestionIndex == widget.questionQuestion.length - 1) {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: ((context) {
           return BuildFinishedScreen(
             selectedAnswers: widget.selectedAnswers,
+            questionQuestion: widget.questionQuestion,
+            questionTitle: widget.questionTitle,
           );
         })));
-      } else if (currentQuestionIndex != questions.length) {
+      } else if (currentQuestionIndex != widget.questionQuestion.length) {
         currentQuestionIndex++;
       }
       _isButtonEnabled = false;
@@ -164,10 +178,6 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
   int answerIndex = -1;
 
   String? selectedAnswer;
-
-  // List<String> selectedAnswers = List.filled(5, '');
-  MaterialStateProperty<Color> bgBlue =
-      MaterialStateProperty.all(Colors.yellow);
 
   void onAnswerSelected2(String answer) {
     setState(() {
@@ -193,7 +203,7 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Question ${currentQuestionIndex + 1}/${questions.length}',
+                    'Question ${currentQuestionIndex + 1}/${widget.questionQuestion.length}',
                     style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -204,7 +214,8 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                     width: 30,
                     child: CircularProgressIndicator(
                       backgroundColor: const Color.fromARGB(92, 99, 216, 99),
-                      value: currentQuestionIndex / (questions.length - 1),
+                      value: currentQuestionIndex /
+                          (widget.questionQuestion.length - 1),
                       strokeWidth: 4.5,
                       valueColor: const AlwaysStoppedAnimation<Color>(
                           Color.fromARGB(255, 99, 216, 99)),
@@ -219,7 +230,7 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  questions[currentQuestionIndex]['question'],
+                  widget.questionQuestion[currentQuestionIndex]['question'],
                   style: const TextStyle(
                     height: 1.4,
                     fontSize: 20,
@@ -229,7 +240,8 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                 ),
               ),
             ),
-            for (var answer in questions[currentQuestionIndex]['answers'])
+            for (var answer in widget.questionQuestion[currentQuestionIndex]
+                ['answers'])
               Padding(
                 padding: const EdgeInsets.only(top: 16, left: 30, right: 30),
                 child: ElevatedButton(
