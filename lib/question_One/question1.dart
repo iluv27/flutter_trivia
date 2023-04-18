@@ -55,7 +55,7 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
             padding: const EdgeInsets.only(left: 20.0),
           ),
-          leadingWidth: 40,
+          leadingWidth: 35,
           title: Center(
             child: Text(
               widget.questionTitle,
@@ -92,6 +92,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 padding: const EdgeInsets.only(top: 50.0, left: 15, right: 15),
                 child: Container(
                     height: 550,
+                    width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.white,
@@ -184,11 +185,33 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
       _isButtonEnabled = true;
       if (widget.selectedAnswers.isNotEmpty && selectedAnswer == answer) {
         widget.selectedAnswers[widget.selectedAnswers.length - 1] = answer;
+      } else if (widget.selectedAnswers.isNotEmpty &&
+          widget.selectedAnswers.length > currentQuestionIndex) {
+        selectedAnswer = widget.selectedAnswers.last;
+      } else if (widget.selectedAnswers.isNotEmpty &&
+          widget.selectedAnswers.length == currentQuestionIndex) {
+        widget.selectedAnswers.add(answer);
       } else {
         widget.selectedAnswers.add(answer);
       }
       selectedAnswer = widget.selectedAnswers.last;
     });
+  }
+
+  MaterialStateProperty<Color> bgColor(answer) {
+    if (selectedAnswer == answer &&
+        answer ==
+            widget.questionQuestion[currentQuestionIndex]['correctAnswer']) {
+      return MaterialStateProperty.all(Color.fromARGB(255, 49, 222, 98));
+    } else if (selectedAnswer == answer &&
+        answer !=
+            widget.questionQuestion[currentQuestionIndex]['correctAnswer']) {
+      return MaterialStateProperty.all(Color.fromARGB(255, 164, 9, 9));
+    } else if (selectedAnswer == answer) {
+      return MaterialStateProperty.all(
+          const Color.fromARGB(255, 214, 214, 214));
+    }
+    return MaterialStateProperty.all(const Color.fromARGB(255, 214, 214, 214));
   }
 
   @override
@@ -252,11 +275,7 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                     minimumSize: MaterialStateProperty.all<Size>(
                         const Size(double.infinity, 60)),
                     elevation: MaterialStateProperty.all(0),
-                    backgroundColor: selectedAnswer == answer
-                        ? MaterialStateProperty.all(
-                            const Color.fromARGB(255, 83, 49, 222))
-                        : MaterialStateProperty.all(
-                            const Color.fromARGB(255, 214, 214, 214)),
+                    backgroundColor: bgColor(answer),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),

@@ -33,63 +33,75 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                   const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
               child: Align(
                 alignment: Alignment.topCenter,
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  height: MediaQuery.of(context).size.height * 0.18,
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Colors.blue, Colors.purple],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+                child: GestureDetector(
+                  onTap: () {
+                    currentQuestionIndex = 0;
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: ((context) {
+                      return QuizScreen(
+                        questionTitle: 'General Quiz',
+                        questionQuestion: questionsFlutter,
+                      );
+                    })));
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: MediaQuery.of(context).size.height * 0.18,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.purple],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(40),
+                      ),
                     ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(40),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 25.0, left: 25.0),
-                    child: Stack(
-                      alignment: Alignment.topLeft,
-                      children: [
-                        const Text(
-                          'Quiz of the Day!!',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24.0,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        const Positioned(
-                          top: 35,
-                          child: Text(
-                            '100 Questions',
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 25.0, left: 25.0),
+                      child: Stack(
+                        alignment: Alignment.topLeft,
+                        children: [
+                          const Text(
+                            'Quiz of the Day!!',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w400,
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                        ),
-                        const Positioned(
-                          top: 85,
-                          child: Text(
-                            'Let\'s Start>',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
+                          const Positioned(
+                            top: 35,
+                            child: Text(
+                              '12 Questions',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          bottom: 20,
-                          left: MediaQuery.of(context).size.width * 0.4,
-                          child: Image.asset(
-                            'images/dash1.png',
-                            scale: 3,
+                          const Positioned(
+                            top: 85,
+                            child: Text(
+                              'Let\'s Start>',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
-                        )
-                      ],
+                          Positioned(
+                            bottom: 20,
+                            left: MediaQuery.of(context).size.width * 0.4,
+                            child: Image.asset(
+                              'images/dash1.png',
+                              scale: 3,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -180,20 +192,20 @@ class ShortCard extends StatelessWidget {
       required this.image,
       required this.color,
       required this.textQuestion,
-      required this.scale});
+      required this.scale,
+      required this.onPressed});
 
   final String title;
   final String image;
   final Color color;
   final String textQuestion;
   final double scale;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // Navigate to quiz screen for the selected category
-      },
+      onTap: onPressed,
       child: Container(
         height: MediaQuery.maybeOf(context)!.size.height,
         width: MediaQuery.maybeOf(context)!.size.width,
@@ -266,20 +278,20 @@ class LongCard extends StatelessWidget {
       required this.image,
       required this.textQuestion,
       required this.color,
-      required this.scale});
+      required this.scale,
+      required this.onPressed});
 
   final String title;
   final String image;
   final Color color;
   final String textQuestion;
   final double scale;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // Navigate to quiz screen for the selected category
-      },
+      onTap: onPressed,
       child: Container(
         height: MediaQuery.maybeOf(context)!.size.height,
         width: MediaQuery.maybeOf(context)!.size.width,
@@ -401,74 +413,164 @@ class PietPainting extends StatelessWidget {
             children: [
               // Column 1
 
-              gridArea('A').containing(const LongCard(
+              gridArea('A').containing(LongCard(
                 title: 'Responsive Screens',
                 image: 'images/icon1.png',
                 scale: 5,
-                color: Color.fromARGB(255, 109, 226, 255),
-                textQuestion: '120 Questions',
+                color: const Color.fromARGB(255, 109, 226, 255),
+                textQuestion: '20 Questions',
+                onPressed: () {
+                  currentQuestionIndex = 0;
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) {
+                    return QuizScreen(
+                      questionTitle: 'Responsive Screens',
+                      questionQuestion: questions,
+                    );
+                  })));
+                },
               )),
               // Column 3
-              gridArea('B').containing(const ShortCard(
+              gridArea('B').containing(ShortCard(
                 title: 'Widgets',
                 image: 'images/icon3.png',
-                color: Color.fromARGB(255, 236, 68, 255),
-                textQuestion: '60 Questions',
+                color: const Color.fromARGB(255, 236, 68, 255),
+                textQuestion: '16 Questions',
                 scale: 10,
+                onPressed: () {
+                  currentQuestionIndex = 0;
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) {
+                    return QuizScreen(
+                      questionTitle: 'Widgets',
+                      questionQuestion: questionsWidget,
+                    );
+                  })));
+                },
               )),
-              gridArea('a').containing(const ShortCard(
+              gridArea('a').containing(ShortCard(
                 title: 'APIs',
                 image: 'images/icon8.png',
-                color: Color.fromARGB(255, 250, 93, 226),
-                textQuestion: '220 Questions',
+                color: const Color.fromARGB(255, 250, 93, 226),
+                textQuestion: '14 Questions',
                 scale: 10,
+                onPressed: () {
+                  currentQuestionIndex = 0;
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) {
+                    return QuizScreen(
+                      questionTitle: 'APIs',
+                      questionQuestion: questionsAPI,
+                    );
+                  })));
+                },
               )),
-              gridArea('a').containing(const ShortCard(
+              gridArea('a').containing(ShortCard(
                 title: 'APIs',
                 image: 'images/icon8.png',
-                color: Color.fromARGB(
+                color: const Color.fromARGB(
                   255,
                   250,
                   93,
                   226,
                 ),
-                textQuestion: '50 Questions',
+                textQuestion: '14 Questions',
                 scale: 10,
+                onPressed: () {
+                  currentQuestionIndex = 0;
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) {
+                    return QuizScreen(
+                      questionTitle: 'APIs',
+                      questionQuestion: questionsAPI,
+                    );
+                  })));
+                },
               )),
-              gridArea('b').containing(const LongCard(
+              gridArea('b').containing(LongCard(
                 title: 'State Management',
                 image: 'images/icon2.png',
                 scale: 6,
-                color: Color.fromARGB(255, 97, 88, 252),
-                textQuestion: '100 Questions',
+                color: const Color.fromARGB(255, 97, 88, 252),
+                textQuestion: '17 Questions',
+                onPressed: () {
+                  currentQuestionIndex = 0;
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) {
+                    return QuizScreen(
+                      questionTitle: 'State Management',
+                      questionQuestion: questionsSTATEManagemnt,
+                    );
+                  })));
+                },
               )),
-              gridArea('c').containing(const LongCard(
+              gridArea('c').containing(LongCard(
                 title: 'Flutter Layout',
                 image: 'images/icon7.png',
                 scale: 5,
-                color: Color.fromARGB(255, 88, 145, 252),
-                textQuestion: '120 Questions',
+                color: const Color.fromARGB(255, 88, 145, 252),
+                textQuestion: '16 Questions',
+                onPressed: () {
+                  currentQuestionIndex = 0;
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) {
+                    return QuizScreen(
+                      questionTitle: 'Flutter Layout',
+                      questionQuestion: questionsFlutterLayout,
+                    );
+                  })));
+                },
               )),
-              gridArea('C').containing(const ShortCard(
+              gridArea('C').containing(ShortCard(
                 title: 'Hot Reload',
                 image: 'images/icon6.png',
-                color: Color.fromARGB(255, 224, 93, 250),
-                textQuestion: '50 Questions',
+                color: const Color.fromARGB(255, 224, 93, 250),
+                textQuestion: '12 Questions',
                 scale: 10,
+                onPressed: () {
+                  currentQuestionIndex = 0;
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) {
+                    return QuizScreen(
+                      questionTitle: 'Hot Reload',
+                      questionQuestion: questionsHotReload,
+                    );
+                  })));
+                },
               )),
-              gridArea('D').containing(const LongCard(
+              gridArea('D').containing(LongCard(
                 title: 'Scrollable Views',
                 image: 'images/icon4.png',
                 scale: 6,
-                color: Color.fromARGB(255, 109, 226, 255),
-                textQuestion: '50 Questions',
+                color: const Color.fromARGB(255, 109, 226, 255),
+                textQuestion: '12 Questions',
+                onPressed: () {
+                  currentQuestionIndex = 0;
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) {
+                    return QuizScreen(
+                      questionTitle: 'Scrollable Views',
+                      questionQuestion: questionsScrollableViews,
+                    );
+                  })));
+                },
               )),
-              gridArea('d').containing(const ShortCard(
+              gridArea('d').containing(ShortCard(
                 title: 'Flutter UI',
                 image: 'images/icon5.png',
-                color: Color.fromARGB(255, 250, 93, 226),
-                textQuestion: '50 Questions',
+                color: const Color.fromARGB(255, 250, 93, 226),
+                textQuestion: '12 Questions',
                 scale: 10,
+                onPressed: () {
+                  currentQuestionIndex = 0;
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) {
+                    return QuizScreen(
+                      questionTitle: 'Flutter UI',
+                      questionQuestion: questionsFlutterUI,
+                    );
+                  })));
+                },
               )),
               // Column 2
             ],
