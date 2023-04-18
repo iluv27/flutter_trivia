@@ -863,3 +863,381 @@ List<Map<String, dynamic>> questionsFlutterLayout = [
         'To retrieve information about the device size and orientation',
   }
 ];
+
+List<Map<String, dynamic>> questionsFlutter = [
+  {
+    'question': 'What is Flutter?',
+    'answers': [
+      'UI toolkit',
+      'Database',
+      'Backend language',
+      'Frontend language'
+    ],
+    'correctAnswer': 'UI toolkit',
+  },
+  {
+    'question': 'What programming language is used in Flutter?',
+    'answers': ['Java', 'Kotlin', 'Dart', 'Swift'],
+    'correctAnswer': 'Dart',
+  },
+  {
+    'question': 'What is the purpose of a StatefulWidget in Flutter?',
+    'answers': [
+      'Handle user input',
+      'Display text',
+      'Manage state',
+      'Make HTTP requests'
+    ],
+    'correctAnswer': 'Manage state',
+  },
+  {
+    'question': 'What is a Flutter widget?',
+    'answers': [
+      'A container for text',
+      'A button',
+      'A graphical element',
+      'A networking library'
+    ],
+    'correctAnswer': 'A graphical element',
+  },
+  {
+    'question': 'What is a Flutter package?',
+    'answers': [
+      'A collection of widgets',
+      'A collection of assets',
+      'A collection of plugins',
+      'A collection of animations'
+    ],
+    'correctAnswer': 'A collection of widgets',
+  },
+  {
+    'question': 'What is the purpose of the Flutter Inspector?',
+    'answers': [
+      'To view and edit code',
+      'To view and edit the UI',
+      'To manage dependencies',
+      'To view and edit app settings'
+    ],
+    'correctAnswer': 'To view and edit the UI',
+  },
+  {
+    'question': 'What is the purpose of the Flutter SDK?',
+    'answers': [
+      'To write code',
+      'To compile code',
+      'To run code',
+      'All of the above'
+    ],
+    'correctAnswer': 'All of the above',
+  },
+  {
+    'question': 'What is the main advantage of using Flutter?',
+    'answers': [
+      'Faster development',
+      'Better performance',
+      'Easier maintenance',
+      'Lower cost'
+    ],
+    'correctAnswer': 'Faster development',
+  },
+  {
+    'question':
+        'What is the difference between StatelessWidget and StatefulWidget?',
+    'answers': [
+      'StatelessWidget cannot have child widgets',
+      'StatefulWidget cannot be rebuilt',
+      'StatelessWidget cannot manage state',
+      'StatefulWidget cannot handle user input'
+    ],
+    'correctAnswer': 'StatelessWidget cannot manage state',
+  },
+  {
+    'question':
+        'What is the purpose of the pubspec.yaml file in a Flutter project?',
+    'answers': [
+      'To configure the project',
+      'To manage dependencies',
+      'To set up the UI',
+      'To define routes'
+    ],
+    'correctAnswer': 'To manage dependencies',
+  },
+  {
+    'question': 'What is the purpose of the MaterialApp widget in Flutter?',
+    'answers': [
+      'To define the app\'s theme',
+      'To manage state',
+      'To handle user input',
+      'To make HTTP requests'
+    ],
+    'correctAnswer': 'To define the app\'s theme',
+  },
+  {
+    'question': 'What is the purpose of the setState() method in Flutter?',
+    'answers': [
+      'To rebuild the widget',
+      'To set the app\'s state',
+      'To manage the app\'s theme',
+      'To handle user input'
+    ],
+    'correctAnswer': 'To rebuild the widget',
+  },
+];
+
+List<Map<String, dynamic>> questionsHotReload = [
+  {
+    'question': 'What is Flutter hot reload?',
+    'answers': [
+      'A feature that allows you to quickly see changes made to your code without having to restart your app.',
+      'A way to speed up your app\'s performance.',
+      'A debugging tool used to track errors in your code.',
+      'A framework for building web applications.'
+    ],
+    'correctAnswer':
+        'A feature that allows you to quickly see changes made to your code without having to restart your app.'
+  },
+  {
+    'question':
+        ' What is the difference between Flutter hot reload and hot restart?',
+    'answers': [
+      'Hot reload applies changes to the app state without resetting the app, while hot restart completely restarts the app',
+      'Hot reload completely restarts the app, while hot restart applies changes to the app state without resetting the app',
+      'Hot reload and hot restart have the same functionality',
+      'Hot reload and hot restart are not related to app development'
+    ],
+    'correctAnswer':
+        'Hot reload applies changes to the app state without resetting the app, while hot restart completely restarts the app'
+  },
+  {
+    'question': 'How do you initiate a hot reload in Flutter?',
+    'answers': [
+      'Save changes in the editor or IDE',
+      'Restart the device',
+      'Connect to a different device',
+      'Run the app for the first time'
+    ],
+    'correctAnswer': 'Save changes in the editor or IDE'
+  },
+  {
+    'question': 'How do you initiate a hot restart in Flutter?',
+    'answers': [
+      'Stop and restart the app',
+      'Save changes in the editor or IDE',
+      'Connect to a different device',
+      'Uninstall and reinstall the app'
+    ],
+    'correctAnswer': 'Stop and restart the app'
+  },
+  {
+    'question':
+        'What is the benefit of using hot reload in Flutter development?',
+    'answers': [
+      'It allows you to see the changes you make to the app immediately',
+      'It increases the size of the app',
+      'It slows down the development process',
+      'It makes the app more complex'
+    ],
+    'correctAnswer':
+        'It allows you to see the changes you make to the app immediately'
+  },
+  {
+    'question':
+        'What is the benefit of using hot restart in Flutter development?',
+    'answers': [
+      'It resets the app state to its initial state, which can be helpful in certain cases',
+      'It speeds up the development process',
+      'It allows you to see the changes you make to the app immediately',
+      'It reduces the size of the app'
+    ],
+    'correctAnswer':
+        'It resets the app state to its initial state, which can be helpful in certain cases'
+  },
+  {
+    'question':
+        'How long does it typically take for hot reload to apply changes to the app state?',
+    'answers': [
+      'A few milliseconds',
+      'A few seconds',
+      'A few minutes',
+      'It depends on the complexity of the app'
+    ],
+    'correctAnswer': 'A few milliseconds'
+  },
+  {
+    'question':
+        'How long does it typically take for hot restart to restart the app?',
+    'answers': [
+      'A few seconds',
+      'A few milliseconds',
+      'A few minutes',
+      'It depends on the complexity of the app'
+    ],
+    'correctAnswer': 'A few seconds'
+  },
+  {
+    'question':
+        'Can you use hot reload and hot restart in conjunction with each other?',
+    'answers': [
+      'Yes, you can use both hot reload and hot restart in the same development cycle',
+      'No, you must choose between using hot reload or hot restart',
+      'Hot reload and hot restart are the same thing',
+      'Hot reload and hot restart are not related to app development'
+    ],
+    'correctAnswer':
+        'Yes, you can use both hot reload and hot restart in the same development cycle'
+  },
+  {
+    'question': 'What is the disadvantage of using hot reload?',
+    'answers': [
+      'It can lead to app crashes.',
+      'It may not preserve certain types of state.',
+      'It can only be used in certain development environments.',
+      'It can be slow to inject new code changes.'
+    ],
+    'correctAnswer': 'It may not preserve certain types of state.'
+  },
+  {
+    'question':
+        'What happens if there are errors in the code during hot reload?',
+    'answers': [
+      'The app continues to run with the old code.',
+      'The app crashes and needs to be restarted.',
+      'The new code is not injected and the app continues to run with the old code.',
+      'The app displays an error message and stops running.'
+    ],
+    'correctAnswer':
+        'The new code is not injected and the app continues to run with the old code.'
+  },
+  {
+    'question': 'What is the keyboard shortcut for hot reload in Flutter?',
+    'answers': ['Ctrl + S', 'Ctrl + R', 'Ctrl + H', ' Ctrl + P'],
+    'correctAnswer': 'Ctrl + R'
+  }
+];
+
+List<Map<String, dynamic>> questionsFlutterUI = [
+  {
+    'question': 'What is Flutter UI?',
+    'answers': [
+      'User interface toolkit for building natively compiled applications',
+      'A programming language',
+      'A database management system',
+      'A front-end web development framework'
+    ],
+    'correctAnswer':
+        'User interface toolkit for building natively compiled applications',
+  },
+  {
+    'question': 'What is the purpose of Flutter UI?',
+    'answers': [
+      'To create visually appealing and responsive user interfaces',
+      'To manage server-side logic and data storage',
+      'To provide advanced machine learning capabilities',
+      'To facilitate real-time collaboration'
+    ],
+    'correctAnswer':
+        'To create visually appealing and responsive user interfaces',
+  },
+  {
+    'question': 'What are some advantages of using Flutter UI?',
+    'answers': [
+      'Hot reload feature allows for faster development and testing',
+      'Ability to create a single codebase for both iOS and Android apps',
+      'Large and supportive developer community',
+      'All of the above'
+    ],
+    'correctAnswer': 'All of the above',
+  },
+  {
+    'question': 'What are widgets in Flutter UI?',
+    'answers': [
+      'Building blocks for user interfaces',
+      'A type of database',
+      'A way to manage server-side logic',
+      'A way to communicate with hardware devices'
+    ],
+    'correctAnswer': 'Building blocks for user interfaces',
+  },
+  {
+    'question':
+        'What is the difference between stateful and stateless widgets?',
+    'answers': [
+      'Stateful widgets can hold mutable state that affects their appearance',
+      'Stateful widgets are more performant than stateless widgets',
+      'Stateless widgets can hold mutable state that affects their appearance',
+      'There is no difference between stateful and stateless widgets'
+    ],
+    'correctAnswer':
+        'Stateful widgets can hold mutable state that affects their appearance',
+  },
+  {
+    'question': 'What is the purpose of the build method in a widget?',
+    'answers': [
+      'To build and return the widget tree for that widget',
+      'To update the state of the widget',
+      'To handle user input events',
+      'To make HTTP requests to an API'
+    ],
+    'correctAnswer': 'To build and return the widget tree for that widget',
+  },
+  {
+    'question': 'What is a layout in Flutter UI?',
+    'answers': [
+      'The arrangement of widgets on the screen',
+      'A way to manage server-side logic',
+      'A way to communicate with hardware devices',
+      'A type of database'
+    ],
+    'correctAnswer': 'The arrangement of widgets on the screen',
+  },
+  {
+    'question': 'What is a container widget in Flutter UI?',
+    'answers': [
+      'A widget that provides a rectangular visual element',
+      'A widget that plays audio and video content',
+      'A widget that manages scrolling content',
+      'A widget that provides a text input field'
+    ],
+    'correctAnswer': 'A widget that provides a rectangular visual element',
+  },
+  {
+    'question': 'What is the purpose of the scaffold widget in Flutter UI?',
+    'answers': [
+      'To provide a basic structure for the app layout',
+      'To create and manage animations',
+      'To provide access to the device\'s hardware sensors',
+      'To interact with the device\'s file system'
+    ],
+    'correctAnswer': 'To provide a basic structure for the app layout',
+  },
+  {
+    'question': 'What is the purpose of a BoxDecoration in Flutter?',
+    'answers': [
+      'to add a background color to a widget',
+      'to add a border to a widget',
+      'to add a shadow to a widget',
+      'to add an image to a widget'
+    ],
+    'correctAnswer': 'to add a border to a widget',
+  },
+  {
+    'question': 'How can you add an image to your Flutter app?',
+    'answers': [
+      'Image.network',
+      'Image.asset',
+      'Image.file',
+      'any of the above'
+    ],
+    'correctAnswer': 'any of the above'
+  },
+  {
+    'question': 'How can you add a custom font to your Flutter app?',
+    'answers': [
+      'download the font file and add it to your project',
+      'use a Google font by specifying the font family',
+      'use a system font by specifying the font family',
+      'all of the above'
+    ],
+    'correctAnswer': 'all of the above'
+  }
+];

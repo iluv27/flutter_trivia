@@ -52,7 +52,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     color: Colors.white,
                     iconSize: 30,
                     onPressed: () {},
-                    icon: const Icon(Icons.menu_rounded),
+                    icon: const Icon(Icons.app_registration),
                   ),
                 ),
                 Positioned(
@@ -61,8 +61,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   child: Text(
                     title,
                     style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 20.5,
+                      fontWeight: FontWeight.w700,
                       color: Colors.white,
                     ),
                   ),

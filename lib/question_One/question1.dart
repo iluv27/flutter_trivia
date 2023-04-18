@@ -35,28 +35,23 @@ class _QuizScreenState extends State<QuizScreen> {
           automaticallyImplyLeading: false,
           elevation: 0,
           leading: IconButton(
-            onPressed: (() {
-              widget.selectedAnswers = [];
-              currentQuestionIndex = 0;
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: ((context) {
-                return const QuizHomeScreen();
-              })));
-            }),
+            onPressed: () {
+              setState(() {
+                widget.selectedAnswers = [];
+                currentQuestionIndex = 0;
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: ((context) {
+                  return const QuizHomeScreen();
+                })));
+              });
+            },
             icon: const Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
             ),
+            padding: const EdgeInsets.only(left: 20.0),
           ),
-          actions: const [
-            Padding(
-              padding: EdgeInsets.only(right: 8.0),
-              child: Icon(
-                Icons.api_outlined,
-                color: Colors.white,
-              ),
-            ),
-          ],
+          leadingWidth: 40,
           title: const Center(
             child: Text(
               'Stateful Widgets',
@@ -123,7 +118,6 @@ class BuildQuizScreen extends StatefulWidget {
 
 class _BuildQuizScreenState extends State<BuildQuizScreen> {
   bool _isButtonEnabled = false;
-  //bool _buttonSelected = false;
 
   final Gradient _disabledButtonColor = const LinearGradient(
     begin: Alignment.topCenter,
@@ -248,9 +242,9 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                     elevation: MaterialStateProperty.all(0),
                     backgroundColor: selectedAnswer == answer
                         ? MaterialStateProperty.all(
-                            Color.fromARGB(255, 83, 49, 222))
+                            const Color.fromARGB(255, 83, 49, 222))
                         : MaterialStateProperty.all(
-                            Color.fromARGB(255, 214, 214, 214)),
+                            const Color.fromARGB(255, 214, 214, 214)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -268,7 +262,7 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                             height: 1.4,
                             color: selectedAnswer == answer
                                 ? Colors.white
-                                : Color.fromARGB(227, 41, 38, 38),
+                                : const Color.fromARGB(227, 41, 38, 38),
                             fontSize: 18,
                             fontWeight: FontWeight.w500),
                       ),
