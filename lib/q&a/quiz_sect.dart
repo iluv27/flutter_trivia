@@ -232,8 +232,8 @@ List<Map<String, dynamic>> questionsAPI = [
     'answers': [
       'To manage user authentication and authorization',
       'To store and retrieve small amounts of data',
-      'To create animations and graphics',
-      'To manage device sensors'
+      'To make animations and graphics',
+      'To manage sensors in devices'
     ],
     'correctAnswer': 'To store and retrieve small amounts of data'
   },
@@ -290,15 +290,14 @@ List<Map<String, dynamic>> questionsAPI = [
     'correctAnswer': 'To launch URLs in the platform\'s default browser or app'
   },
   {
-    'question': 'What is the purpose of the FutureBuilder widget in Flutter?',
+    'question': 'The FutureBuilder widget in Flutter is to build a widget...',
     'answers': [
-      'To build a widget based on a Future that is resolved asynchronously',
-      'To build a widget that returns a Future when it is tapped',
-      'To build a widget that has a loading spinner until its data is available',
-      'To build a widget that is displayed for a certain duration and then disappears'
+      'based on a Future that is resolved asynchronously',
+      'that returns a Future when it is tapped',
+      'that has a loading spinner until its data is available',
+      'that is displayed for a certain duration and then disappears'
     ],
-    'correctAnswer':
-        'To build a widget based on a Future that is resolved asynchronously'
+    'correctAnswer': 'based on a Future that is resolved asynchronously'
   },
   {
     'question': 'What is the purpose of the Image.asset() method in Flutter?',
@@ -311,15 +310,14 @@ List<Map<String, dynamic>> questionsAPI = [
     'correctAnswer': 'To load an image from the application\'s asset bundle'
   },
   {
-    'question':
-        'What is the purpose of the Navigator.push() method in Flutter?',
+    'question': 'The purpose of the Navigator.push() method in Flutter is?',
     'answers': [
-      'To push a new route onto the navigator stack',
-      'To pop the current route from the navigator stack',
-      'To replace the current route on the navigator stack with a new one',
-      'To go back to the previous route in the navigator stack'
+      'Push a new route onto the navigator stack',
+      'Pop the current route from the navigator stack',
+      'Replace the current route on the navigator stack with a new one',
+      'Go back to the previous route in the navigator stack'
     ],
-    'correctAnswer': 'To push a new route onto the navigator stack'
+    'correctAnswer': 'Push a new route onto the navigator stack'
   },
   {
     'question': 'What is the purpose of the DateTime class in Flutter?',

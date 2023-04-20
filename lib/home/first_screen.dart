@@ -25,153 +25,156 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
           gradientEnd: Colors.purple,
         ),
         backgroundColor: Colors.white,
-        body: Stack(
+        body: Column(
           children: [
             //THE TOP CARD
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: GestureDetector(
-                  onTap: () {
-                    currentQuestionIndex = 0;
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: ((context) {
-                      return QuizScreen(
-                        questionTitle: 'General Quiz',
-                        questionQuestion: questionsFlutter,
-                      );
-                    })));
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    height: MediaQuery.of(context).size.height * 0.18,
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Colors.blue, Colors.purple],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
+            Expanded(
+              flex: 0,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: GestureDetector(
+                    onTap: () {
+                      currentQuestionIndex = 0;
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: ((context) {
+                        return QuizScreen(
+                          questionTitle: 'General Quiz',
+                          questionQuestion: questionsFlutter,
+                        );
+                      })));
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      height: MediaQuery.of(context).size.height * 0.18,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Colors.blue, Colors.purple],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(40),
+                        ),
                       ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(40),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 25.0, left: 25.0),
-                      child: Stack(
-                        alignment: Alignment.topLeft,
-                        children: [
-                          const Text(
-                            'Quiz of the Day!!',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          const Positioned(
-                            top: 35,
-                            child: Text(
-                              '12 Questions',
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 25.0, left: 25.0),
+                        child: Stack(
+                          alignment: Alignment.topLeft,
+                          children: [
+                            const Text(
+                              'Quiz of the Day!!',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w400,
+                                fontSize: 24.0,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
-                          ),
-                          const Positioned(
-                            top: 85,
-                            child: Text(
-                              'Let\'s Start>',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
+                            const Positioned(
+                              top: 35,
+                              child: Text(
+                                '12 Questions',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
                             ),
-                          ),
-                          Positioned(
-                            bottom: 20,
-                            left: MediaQuery.of(context).size.width * 0.4,
-                            child: Image.asset(
-                              'images/dash1.png',
-                              scale: 3,
+                            const Positioned(
+                              top: 85,
+                              child: Text(
+                                'Let\'s Start>',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
-                          )
-                        ],
+                            Positioned(
+                              bottom: 20,
+                              left: MediaQuery.of(context).size.width * 0.38,
+                              child: Image.asset(
+                                'images/dash1.png',
+                                scale: 3,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
             ),
-            Positioned(
-              height: MediaQuery.of(context).size.height * 0.52,
-              width: MediaQuery.of(context).size.width,
-              bottom: 90,
-              child: const Padding(
-                padding: EdgeInsets.only(left: 20.0, right: 20),
+            const Expanded(
+              flex: 2,
+              child: Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20, top: 25),
                 child: PietPainting(),
               ),
             ),
 
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                color: Colors.white,
-                width: MediaQuery.of(context).size.width,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 15.0, horizontal: 17),
-                  child: Container(
-                    decoration: const ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(18),
-                        ),
-                      ),
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.blue,
-                          Color.fromARGB(255, 10, 115, 201),
-                          Color.fromARGB(255, 8, 76, 132)
-                        ],
-                      ),
-                    ),
-                    child: ElevatedButton(
-                      onPressed: (() {
-                        currentQuestionIndex = 0;
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: ((context) {
-                          return QuizScreen(
-                            questionTitle: 'Responsive Screens',
-                            questionQuestion: questionsFlutter,
-                          );
-                        })));
-                      }),
-                      style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all<Size>(
-                            Size(MediaQuery.of(context).size.width * 0.9, 55)),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
+            Expanded(
+              flex: 0,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  color: Colors.white,
+                  width: MediaQuery.of(context).size.width,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15.0, horizontal: 17),
+                    child: Container(
+                      decoration: const ShapeDecoration(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(18),
                           ),
                         ),
-                        elevation: MaterialStateProperty.all<double>(0),
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.transparent),
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.blue,
+                            Color.fromARGB(255, 10, 115, 201),
+                            Color.fromARGB(255, 8, 76, 132)
+                          ],
+                        ),
                       ),
-                      child: const Text(
-                        'Select Randomly',
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            wordSpacing: 1),
+                      child: ElevatedButton(
+                        onPressed: (() {
+                          currentQuestionIndex = 0;
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: ((context) {
+                            return QuizScreen(
+                              questionTitle: 'Responsive Screens',
+                              questionQuestion: questionsFlutter,
+                            );
+                          })));
+                        }),
+                        style: ButtonStyle(
+                          minimumSize: MaterialStateProperty.all<Size>(Size(
+                              MediaQuery.of(context).size.width * 0.9, 55)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                          elevation: MaterialStateProperty.all<double>(0),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.transparent),
+                        ),
+                        child: const Text(
+                          'Select Randomly',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              wordSpacing: 1),
+                        ),
                       ),
                     ),
                   ),

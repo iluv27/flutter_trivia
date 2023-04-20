@@ -202,11 +202,11 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
     if (selectedAnswer == answer &&
         answer ==
             widget.questionQuestion[currentQuestionIndex]['correctAnswer']) {
-      return MaterialStateProperty.all(Color.fromARGB(255, 49, 222, 98));
+      return MaterialStateProperty.all(const Color.fromARGB(255, 19, 194, 19));
     } else if (selectedAnswer == answer &&
         answer !=
             widget.questionQuestion[currentQuestionIndex]['correctAnswer']) {
-      return MaterialStateProperty.all(Color.fromARGB(255, 164, 9, 9));
+      return MaterialStateProperty.all(const Color.fromARGB(255, 223, 46, 46));
     } else if (selectedAnswer == answer) {
       return MaterialStateProperty.all(
           const Color.fromARGB(255, 214, 214, 214));
@@ -309,8 +309,8 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
             decoration: ShapeDecoration(
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(18),
-                    bottomRight: Radius.circular(18)),
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(22)),
               ),
               gradient:
                   _isButtonEnabled ? _enabledButtonColor : _disabledButtonColor,
@@ -327,8 +327,8 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
                 shape: MaterialStateProperty.all<OutlinedBorder>(
                   const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(18),
-                        bottomRight: Radius.circular(18)),
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(22)),
                   ),
                 ),
               ),
