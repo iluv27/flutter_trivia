@@ -1,10 +1,12 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, no_leading_underscores_for_local_identifiers, unused_element
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trivia/home/first_screen.dart';
 import 'package:flutter_trivia/question_One/question1.dart';
 import '../q&a/third_screen.dart';
 import '../q&a/quiz_sect.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BuildFinishedScreen extends StatefulWidget {
   BuildFinishedScreen(
@@ -47,7 +49,41 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
       }
     }
 
+    final Uri _url =
+        Uri.parse('https://www.linkedin.com/in/joy-ehiedu-49a163188');
+
+    Future<void> _launchUrl() async {
+      if (!await launchUrl(_url)) {
+        throw Exception('Could not launch $_url');
+      }
+    }
+
     return Scaffold(
+        bottomSheet: Container(
+          height: 45,
+          width: double.infinity,
+          color: const Color.fromARGB(255, 104, 0, 125),
+          child: RichText(
+            text: TextSpan(
+              text: '© copyright | ',
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  fontStyle: FontStyle.italic),
+              children: [
+                TextSpan(
+                    text: 'Joy Ehiedu',
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.italic),
+                    recognizer: TapGestureRecognizer(debugOwner: _launchUrl())),
+              ],
+            ),
+          ),
+        ),
         appBar: AppBar(
           flexibleSpace: Container(
               decoration: const BoxDecoration(

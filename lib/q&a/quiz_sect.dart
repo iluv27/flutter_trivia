@@ -91,10 +91,10 @@ List<Map<String, dynamic>> questions = [
   {
     'question': 'What is the purpose of a SafeArea widget in Flutter?',
     'answers': [
-      'To add padding to a widget',
+      'To add some padding to a widget',
       'To make a widget scrollable',
       'To ensure a widget is not hidden behind system UI elements',
-      'To create a responsive layout'
+      'To make a responsive layout'
     ],
     'correctAnswer':
         'To ensure a widget is not hidden behind system UI elements'
@@ -122,10 +122,10 @@ List<Map<String, dynamic>> questions = [
   {
     'question': 'What is the purpose of a Expanded widget in Flutter?',
     'answers': [
-      'To add padding to a widget',
+      'To put padding in a widget',
       'To make a widget draggable',
       'To change the size of a widget based on available space',
-      'To create a responsive layout'
+      'To make a layout responsive'
     ],
     'correctAnswer': 'To change the size of a widget based on available space'
   },
@@ -136,7 +136,7 @@ List<Map<String, dynamic>> questions = [
       'To make a widget scrollable',
       'To add padding to a widget',
       'To create a responsive layout',
-      'To change the size of a widget based on available space'
+      'To change the size of a widget based on the available space'
     ],
     'correctAnswer': 'To make a widget scrollable'
   },
@@ -146,8 +146,8 @@ List<Map<String, dynamic>> questions = [
     'answers': [
       'To get the size of the device screen',
       'To get the size of a widget',
-      'To create a responsive layout',
-      'To make a widget scrollable'
+      'To make a layout responsive',
+      'To cause a widget to be scrollable'
     ],
     'correctAnswer': 'To get the size of the device screen'
   },
@@ -165,9 +165,9 @@ List<Map<String, dynamic>> questions = [
     'question': 'What is the purpose of a SizedBox widget in Flutter?',
     'answers': [
       'To create a fixed size box',
-      'To make a widget draggable',
-      'To change the size of a widget based on available space',
-      'To ensure a widget has a minimum width'
+      'To create a draggable widget',
+      'To make the size of a widget change based on available space',
+      'To ensure a widget has a low width'
     ],
     'correctAnswer': 'To create a fixed size box'
   },
@@ -176,11 +176,11 @@ List<Map<String, dynamic>> questions = [
         'What is the purpose of a FractionallySizedBox widget in Flutter?',
     'answers': [
       'To make a widget draggable',
-      'To create a fixed size box',
+      'To make a fixed size box',
       'To ensure a widget has a minimum width',
       'To change the size of a widget based on available space'
     ],
-    'correctAnswer': 'To change the size of a widget'
+    'correctAnswer': 'To change the size of a widget based on available space'
   },
   {
     'question': 'What is the purpose of the TextEditingController in Flutter?',
@@ -250,10 +250,10 @@ List<Map<String, dynamic>> questionsAPI = [
   {
     'question': 'What is the purpose of the geocoding package in Flutter?',
     'answers': [
-      'To create animations and graphics',
+      'To make animations and graphics',
       'To manage device sensors',
       'To convert a geographic coordinate to an address and vice versa',
-      'To make HTTP requests and handle responses'
+      'To create HTTP requests and handle responses'
     ],
     'correctAnswer':
         'To convert a geographic coordinate to an address and vice versa'
@@ -262,7 +262,7 @@ List<Map<String, dynamic>> questionsAPI = [
     'question': 'What is the purpose of the flutter_map package in Flutter?',
     'answers': [
       'To create animations and graphics',
-      'To manage device sensors',
+      'To effectively manage device sensors',
       'To render maps and handle user interaction with them',
       'To make HTTP requests and handle responses'
     ],
@@ -273,8 +273,8 @@ List<Map<String, dynamic>> questionsAPI = [
         'What is the purpose of the web_socket_channel package in Flutter?',
     'answers': [
       'To manage device sensors',
-      'To make HTTP requests and handle responses',
-      'To create animations and graphics',
+      'To create HTTP requests and handle responses',
+      'To make animations and graphics',
       'To handle WebSocket communication'
     ],
     'correctAnswer': 'To handle WebSocket communication'
@@ -283,7 +283,7 @@ List<Map<String, dynamic>> questionsAPI = [
     'question': 'What is the purpose of the url_launcher package in Flutter?',
     'answers': [
       'To make HTTP requests and handle responses',
-      'To manage device sensors',
+      'To handle device sensors',
       'To create animations and graphics',
       'To launch URLs in the platform\'s default browser or app'
     ],
@@ -353,16 +353,14 @@ List<Map<String, dynamic>> questionsSTATEManagemnt = [
     'correctAnswer': 'Data that changes over time'
   },
   {
-    'question':
-        'What is the difference between StatefulWidget and StatelessWidget in Flutter?',
+    'question': 'The difference between StatefulWidget and StatelessWidget is?',
     'answers': [
-      'StatefulWidget can hold mutable state, while StatelessWidget cannot',
-      'StatelessWidget can hold mutable state, while StatefulWidget cannot',
+      'StatefulWidget is mutable, while StatelessWidget is not',
+      'StatelessWidget is mutable, while StatefulWidget is not',
       'StatelessWidget is a type of StatefulWidget',
       'StatefulWidget is a type of StatelessWidget'
     ],
-    'correctAnswer':
-        'StatefulWidget can hold mutable state, while StatelessWidget cannot'
+    'correctAnswer': 'StatefulWidget is mutable, while StatelessWidget is not'
   },
   {
     'question': 'What is setState() in Flutter?',
@@ -395,23 +393,11 @@ List<Map<String, dynamic>> questionsSTATEManagemnt = [
     'correctAnswer': 'A package for state management'
   },
   {
-    'question':
-        'What is the difference between ValueNotifier and ChangeNotifier in Flutter?',
-    'answers': [
-      'ValueNotifier only notifies listeners when its value changes, while ChangeNotifier can notify listeners when any of its fields change',
-      'ChangeNotifier only notifies listeners when its value changes, while ValueNotifier can notify listeners when any of its fields change',
-      'ValueNotifier and ChangeNotifier are the same thing',
-      'ValueNotifier can hold multiple values, while ChangeNotifier can only hold one'
-    ],
-    'correctAnswer':
-        'ValueNotifier only notifies listeners when its value changes, while ChangeNotifier can notify listeners when any of its fields change'
-  },
-  {
     'question': 'What is BLoC in Flutter?',
     'answers': [
       'A pattern for state management',
-      'A type of widget',
-      'A function that builds widgets',
+      'A type of flutter widget',
+      'A function that builds and rebuilds widgets',
       'A way to style widgets'
     ],
     'correctAnswer': 'A pattern for state management'
@@ -422,7 +408,7 @@ List<Map<String, dynamic>> questionsSTATEManagemnt = [
       'A package for state management',
       'A type of widget',
       'A function that builds widgets',
-      'A way to style widgets'
+      'A way to customize widgets'
     ],
     'correctAnswer': 'A package for state management'
   },
@@ -430,8 +416,8 @@ List<Map<String, dynamic>> questionsSTATEManagemnt = [
     'question': 'What is a Stream in Flutter?',
     'answers': [
       'A sequence of asynchronous events',
-      'A type of widget',
-      'A function that builds widgets',
+      'A type of flutter widget',
+      'A function that listens to widget actions',
       'A way to style widgets'
     ],
     'correctAnswer': 'A sequence of asynchronous events'
@@ -448,12 +434,12 @@ List<Map<String, dynamic>> questionsSTATEManagemnt = [
         'A widget that rebuilds itself when it receives new data from a stream'
   },
   {
-    'question': 'What is an InheritedWidget in Flutter?',
+    'question': 'What is an InheritedWidget?',
     'answers': [
-      'A widget that passes data down the widget tree to its descendants',
-      'A widget that displays a list of items in a scrollable view',
-      'A widget that displays a modal dialog box',
+      'A widget that shows a list of items in a scrollable view',
+      'A widget that displays a modal dialog box in the screen',
       'A widget that animates its children'
+          'A widget that passes data down the widget tree to its descendants',
     ],
     'correctAnswer':
         'A widget that passes data down the widget tree to its descendants'
@@ -472,25 +458,23 @@ List<Map<String, dynamic>> questionsSTATEManagemnt = [
   {
     'question': 'What is a ChangeNotifier in Flutter?',
     'answers': [
-      'A class that extends ValueNotifier and provides methods to change its value',
       'A widget that displays a list of items in a scrollable view',
       'A widget that displays a modal dialog box',
-      'A class that holds a single value and notifies its listeners when its value changes'
+      'A class that extends ValueNotifier and provides methods to change its value',
+      'A class notifies its listeners when its value changes'
     ],
     'correctAnswer':
         'A class that extends ValueNotifier and provides methods to change its value'
   },
   {
-    'question':
-        'What is the difference between InheritedWidget and Provider in Flutter?',
+    'question': 'What is the difference between InheritedWidget and Provider?',
     'answers': [
-      'InheritedWidget is a low-level API, while Provider is a high-level API built on top of it',
-      'InheritedWidget and Provider both provide the same functionality',
-      'InheritedWidget is used for state management, while Provider is used for navigation',
-      'InheritedWidget is used for navigation, while Provider is used for state management'
+      'InheritedWidget is low-level API',
+      'InheritedWidget and Provider provide the same functionality',
+      'Provider is mainly to aid navigation',
+      'InheritedWidget is mainly to aid navigation'
     ],
-    'correctAnswer':
-        'InheritedWidget is a low-level API, while Provider is a high-level API built on top of it'
+    'correctAnswer': 'InheritedWidget is low-level API'
   },
   {
     'question': 'What is the purpose of the StreamController in Flutter?',
@@ -506,9 +490,9 @@ List<Map<String, dynamic>> questionsSTATEManagemnt = [
     'question': 'What is a BLoC in Flutter?',
     'answers': [
       'A design pattern used for state management',
-      'A widget that can be used to create streams of data',
-      'A way to define custom events in Flutter',
-      'A tool for debugging widgets'
+      'A widget that can be used to listen for streams of data',
+      'A way to define custom events',
+      'A tool for debugging widget errors'
     ],
     'correctAnswer': 'A design pattern used for state management'
   },
@@ -529,16 +513,16 @@ List<Map<String, dynamic>> questionsWidget = [
     'question': 'What is the purpose of the Scaffold widget in Flutter?',
     'answers': [
       'To create a basic visual structure for a Flutter app.',
-      'To handle routing and navigation within a Flutter app.',
-      'To manage state for a Flutter app.',
-      'To handle network requests in a Flutter app.',
+      'To handle the routing system within a Flutter app.',
+      'To manage the state of a Flutter app.',
+      'To handle network requests in Flutter apps.',
     ],
     'correctAnswer': 'To create a basic visual structure for a Flutter app.'
   },
   {
     'question': 'What is the purpose of the MaterialApp widget in Flutter?',
     'answers': [
-      'To create a basic visual structure for a Flutter app.',
+      'To create the basic visual structure of a Flutter app.',
       'To handle routing and navigation within a Flutter app.',
       'To manage state for a Flutter app.',
       'To handle network requests in a Flutter app.',
@@ -549,9 +533,9 @@ List<Map<String, dynamic>> questionsWidget = [
     'question': 'What is the purpose of the ListView widget in Flutter?',
     'answers': [
       'To display a list of items in a scrollable view.',
-      'To manage state for a Flutter app.',
-      'To handle network requests in a Flutter app.',
-      'To create a basic visual structure for a Flutter app.',
+      'To manage state for Flutter apps.',
+      'To manage network requests in a Flutter app.',
+      'To create a basic visual structure in the Flutter app.',
     ],
     'correctAnswer': 'To display a list of items in a scrollable view.'
   },
@@ -571,7 +555,7 @@ List<Map<String, dynamic>> questionsWidget = [
       'To handle user taps on a widget.',
       'To display a list of items in a scrollable view.',
       'To create a basic visual structure for a Flutter app.',
-      'To manage state for a Flutter app.',
+      'To manage the present state for Flutter apps.',
     ],
     'correctAnswer': 'To handle user taps on a widget.'
   },
@@ -601,7 +585,7 @@ List<Map<String, dynamic>> questionsWidget = [
       'Displaying a scrollable list of widgets',
       'Creating a grid of widgets',
       'Laying out widgets in a row',
-      'Adding padding around widgets'
+      'Adding padding around individual widgets'
     ],
     'correctAnswer': 'Displaying a scrollable list of widgets'
   },
@@ -621,7 +605,7 @@ List<Map<String, dynamic>> questionsWidget = [
       'Positioning a widget within a Stack',
       'Creating a flexible layout',
       'Displaying a scrollable list of widgets',
-      'Adding padding around widgets'
+      'Adding padding between widgets'
     ],
     'correctAnswer': 'Positioning a widget within a Stack'
   },
@@ -641,7 +625,7 @@ List<Map<String, dynamic>> questionsWidget = [
       'Accepting user input',
       'Displaying text',
       'Creating a grid of widgets',
-      'Laying out widgets in a row'
+      'Laying out widgets in a certain position'
     ],
     'correctAnswer': 'Accepting user input'
   },
@@ -649,7 +633,7 @@ List<Map<String, dynamic>> questionsWidget = [
     'question': 'What is the purpose of the SafeArea widget?',
     'answers': [
       'Ensuring widgets are not obscured by device insets',
-      'Creating a grid of widgets',
+      'Creating a grid of widgets in columns',
       'Laying out widgets in a row',
       'Adding padding around widgets'
     ],
@@ -660,8 +644,8 @@ List<Map<String, dynamic>> questionsWidget = [
     'answers': [
       'Creating a button for common actions',
       'Displaying a scrollable list of widgets',
-      'Laying out widgets in a row',
-      'Adding padding around widgets'
+      'Laying out widgets in a column',
+      'Adding padding between widgets'
     ],
     'correctAnswer': 'Creating a button for common actions'
   },
@@ -681,7 +665,7 @@ List<Map<String, dynamic>> questionsWidget = [
       'Positioning a widget within a Stack in a specific direction',
       'Creating a flexible layout',
       'Displaying a scrollable list of widgets',
-      'Adding padding around widgets'
+      'Adding padding around rows and columns'
     ],
     'correctAnswer':
         'Positioning a widget within a Stack in a specific direction'
@@ -723,9 +707,9 @@ List<Map<String, dynamic>> questionsFlutterLayout = [
     'question': 'What is the purpose of the SafeArea widget in Flutter?',
     'answers': [
       'To ensure that content is not obscured by device-specific features',
-      'To create a border around a widget',
-      'To add padding around a widget',
-      'To create a responsive layout'
+      'To create a border round a widget',
+      'To add padding within widgets',
+      'To create a responsive layout for devices'
     ],
     'correctAnswer':
         'To ensure that content is not obscured by device-specific features'
@@ -735,7 +719,7 @@ List<Map<String, dynamic>> questionsFlutterLayout = [
         'What is the purpose of the crossAxisAlignment property in a Row or Column layout in Flutter?',
     'answers': [
       'To control the horizontal alignment of the widgets',
-      'To control the vertical alignment of the widgets',
+      'To control the vertical alignment of each of the widgets',
       'To control the size of the widgets',
       'To control the color of the widgets'
     ],
@@ -746,9 +730,9 @@ List<Map<String, dynamic>> questionsFlutterLayout = [
         'What is the purpose of the mainAxisAlignment property in a Row or Column layout in Flutter?',
     'answers': [
       'To control the vertical alignment of the widgets',
-      'To control the horizontal alignment of the widgets',
-      'To control the size of the widgets',
-      'To control the color of the widgets'
+      'To control the horizontal alignment within widgets',
+      'To control the height of the widgets',
+      'To control the size and position of the widgets'
     ],
     'correctAnswer': 'To control the vertical alignment of the widgets'
   },
@@ -767,8 +751,8 @@ List<Map<String, dynamic>> questionsFlutterLayout = [
     'answers': [
       'To make a widget flexible and allow it to take up only the space it needs',
       'To make a widget fixed and prevent it from resizing',
-      'To create a border around a widget',
-      'To create a responsive layout'
+      'To create a border round a widget',
+      'To shrink a widget to fit its inner contents'
     ],
     'correctAnswer':
         'To make a widget flexible and allow it to take up only the space it needs'
@@ -777,24 +761,12 @@ List<Map<String, dynamic>> questionsFlutterLayout = [
     'question': 'What is the purpose of a Wrap widget in Flutter?',
     'answers': [
       'To wrap its children to the next line when they exceed the width of the container',
-      'Allows widgets to be wrapped and displayed in multiple lines, like a flow layout',
-      'To wrap its children to the next column when they exceed the height of the container',
-      'To wrap its children to the next screen when they exceed the width of the container'
+      'Allows widgets to be wrapped and displayed in multiple lines.',
+      'To wrap its children to the next column',
+      'To wrap its children to the next screen.'
     ],
     'correctAnswer':
-        'Allows widgets to be wrapped and displayed in multiple lines, like a flow layout'
-  },
-  {
-    'question':
-        'What is the difference between mainAxisAlignment and crossAxisAlignment in Flutter?',
-    'answers': [
-      'mainAxisAlignment controls the vertical positioning of widgets, while crossAxisAlignment controls the horizontal positioning of widgets',
-      'crossAxisAlignment controls the vertical positioning of widgets, while mainAxisAlignment controls the horizontal positioning of widgets',
-      'mainAxisAlignment and crossAxisAlignment both control the vertical positioning of widgets',
-      'mainAxisAlignment and crossAxisAlignment both control the horizontal positioning of widgets'
-    ],
-    'correctAnswer':
-        'mainAxisAlignment controls the vertical positioning of widgets, while crossAxisAlignment controls the horizontal positioning of widgets'
+        'Allows widgets to be wrapped and displayed in multiple lines.'
   },
   {
     'question': 'What is the purpose of a SizedBox widget in Flutter?',
@@ -830,13 +802,13 @@ List<Map<String, dynamic>> questionsFlutterLayout = [
   {
     'question': 'What is the purpose of the Flexible widget in Flutter?',
     'answers': [
-      'To allow a child widget to have flexible width or height within a Row or Column',
-      'To add padding around a widget',
-      'To position a widget relative to its parent',
-      'To display a list of items in a grid-like fashion'
+      'To allow a child widget to have flexible width/height in a Row/Column',
+      'To add padding in a widget',
+      'To position a widget relative to its parent or child',
+      'To force a child widget to have a fixed width/height'
     ],
     'correctAnswer':
-        'To allow a child widget to have flexible width or height within a Row or Column'
+        'To allow a child widget to have flexible width/height in a Row/Column'
   },
   {
     'question': 'What is the purpose of the LayoutBuilder widget in Flutter?',
@@ -854,7 +826,7 @@ List<Map<String, dynamic>> questionsFlutterLayout = [
     'answers': [
       'To retrieve information about the device size and orientation',
       'To add padding around a widget',
-      'To position a widget relative to its parent',
+      'To position a widget relative to its child',
       'To retrieve information about the device battery level'
     ],
     'correctAnswer':
@@ -976,7 +948,7 @@ List<Map<String, dynamic>> questionsFlutter = [
       'To rebuild the widget',
       'To set the app\'s state',
       'To manage the app\'s theme',
-      'To handle user input'
+      'To create and handle user input'
     ],
     'correctAnswer': 'To rebuild the widget',
   },
@@ -986,25 +958,24 @@ List<Map<String, dynamic>> questionsHotReload = [
   {
     'question': 'What is Flutter hot reload?',
     'answers': [
-      'A feature that allows you to quickly see changes made to your code without having to restart your app.',
+      'It allows you to quickly see changes made without having to restart your app.',
       'A way to speed up your app\'s performance.',
       'A debugging tool used to track errors in your code.',
       'A framework for building web applications.'
     ],
     'correctAnswer':
-        'A feature that allows you to quickly see changes made to your code without having to restart your app.'
+        'It allows you to quickly see changes made without having to restart your app.'
   },
   {
     'question':
-        ' What is the difference between Flutter hot reload and hot restart?',
+        'What is the difference between Flutter hot reload and hot restart?',
     'answers': [
-      'Hot reload applies changes to the app state without resetting the app, while hot restart completely restarts the app',
-      'Hot reload completely restarts the app, while hot restart applies changes to the app state without resetting the app',
-      'Hot reload and hot restart have the same functionality',
-      'Hot reload and hot restart are not related to app development'
+      'Hot reload applies changes without resetting the app',
+      'Hot restart applies changes without resetting the app',
+      'Hot reload and hot restart have same functionality',
+      'Hot reload is not related to app development'
     ],
-    'correctAnswer':
-        'Hot reload applies changes to the app state without resetting the app, while hot restart completely restarts the app'
+    'correctAnswer': 'Hot reload applies changes without resetting the app'
   },
   {
     'question': 'How do you initiate a hot reload in Flutter?',
@@ -1020,8 +991,8 @@ List<Map<String, dynamic>> questionsHotReload = [
     'question': 'How do you initiate a hot restart in Flutter?',
     'answers': [
       'Stop and restart the app',
-      'Save changes in the editor or IDE',
-      'Connect to a different device',
+      'Save changes in the editor or in the IDE',
+      'Connect to another device',
       'Uninstall and reinstall the app'
     ],
     'correctAnswer': 'Stop and restart the app'
@@ -1044,7 +1015,7 @@ List<Map<String, dynamic>> questionsHotReload = [
     'answers': [
       'It resets the app state to its initial state, which can be helpful in certain cases',
       'It speeds up the development process',
-      'It allows you to see the changes you make to the app immediately',
+      'It allows you to see the changes you make to the app instantly',
       'It reduces the size of the app'
     ],
     'correctAnswer':
@@ -1065,24 +1036,23 @@ List<Map<String, dynamic>> questionsHotReload = [
     'question':
         'How long does it typically take for hot restart to restart the app?',
     'answers': [
-      'A few seconds',
-      'A few milliseconds',
-      'A few minutes',
-      'It depends on the complexity of the app'
+      'Few seconds',
+      'Few milliseconds',
+      'Minutes',
+      'It all depends on the complexity of the app'
     ],
-    'correctAnswer': 'A few seconds'
+    'correctAnswer': 'Few seconds'
   },
   {
     'question':
         'Can you use hot reload and hot restart in conjunction with each other?',
     'answers': [
-      'Yes, you can use both hot reload and hot restart in the same development cycle',
+      'Yes, you can use both hot reload and hot restart.',
       'No, you must choose between using hot reload or hot restart',
       'Hot reload and hot restart are the same thing',
       'Hot reload and hot restart are not related to app development'
     ],
-    'correctAnswer':
-        'Yes, you can use both hot reload and hot restart in the same development cycle'
+    'correctAnswer': 'Yes, you can use both hot reload and hot restart.'
   },
   {
     'question': 'What is the disadvantage of using hot reload?',
@@ -1100,11 +1070,10 @@ List<Map<String, dynamic>> questionsHotReload = [
     'answers': [
       'The app continues to run with the old code.',
       'The app crashes and needs to be restarted.',
-      'The new code is not injected and the app continues to run with the old code.',
+      'The new code is not injected in the app.',
       'The app displays an error message and stops running.'
     ],
-    'correctAnswer':
-        'The new code is not injected and the app continues to run with the old code.'
+    'correctAnswer': 'The new code is not injected in the app.'
   },
   {
     'question': 'What is the keyboard shortcut for hot reload in Flutter?',
@@ -1160,13 +1129,12 @@ List<Map<String, dynamic>> questionsFlutterUI = [
     'question':
         'What is the difference between stateful and stateless widgets?',
     'answers': [
-      'Stateful widgets can hold mutable state that affects their appearance',
+      'Stateful widgets can hold mutable state.',
       'Stateful widgets are more performant than stateless widgets',
-      'Stateless widgets can hold mutable state that affects their appearance',
-      'There is no difference between stateful and stateless widgets'
+      'Stateless widgets can hold mutable state.',
+      'There is no difference.'
     ],
-    'correctAnswer':
-        'Stateful widgets can hold mutable state that affects their appearance',
+    'correctAnswer': 'Stateful widgets can hold mutable state.',
   },
   {
     'question': 'What is the purpose of the build method in a widget?',
@@ -1255,20 +1223,20 @@ List<Map<String, dynamic>> questionsScrollableViews = [
     'question': 'What is a SingleChildScrollView in Flutter?',
     'answers': [
       'A widget that displays a single child and allows you to scroll it',
-      'A package for managing state in Flutter apps',
+      'A package for managing states in Flutter apps',
       'A design pattern for building user interfaces',
-      'A class that allows you to navigate between screens'
+      'A class that allows you to navigate inbetween screens'
     ],
     'correctAnswer':
         'A widget that displays a single child and allows you to scroll it',
   },
   {
-    'question': 'What is a CustomScrollView in Flutter?',
+    'question': 'What is a CustomScrollView?',
     'answers': [
       'A widget that can combine multiple scrollable widgets into a single scroll view',
       'A package for managing state in Flutter apps',
       'A class that allows you to navigate between screens',
-      'A design pattern for building user interfaces'
+      'A design pattern for rebuilding user interfaces'
     ],
     'correctAnswer':
         'A widget that can combine multiple scrollable widgets into a single scroll view',
@@ -1277,8 +1245,8 @@ List<Map<String, dynamic>> questionsScrollableViews = [
     'question': 'What is a GridView in Flutter?',
     'answers': [
       'A widget that displays a collection of items in a grid format',
-      'A class that allows you to navigate between screens',
-      'A package for managing state in Flutter apps',
+      'A class that allows you to navigate through screens',
+      'A package for managing the state of Flutter apps',
       'A design pattern for building user interfaces'
     ],
     'correctAnswer':
@@ -1290,7 +1258,7 @@ List<Map<String, dynamic>> questionsScrollableViews = [
       'A widget that can be used to create custom scroll effects',
       'A class that allows you to navigate between screens',
       'A package for managing state in Flutter apps',
-      'A design pattern for building user interfaces'
+      'A design pattern for customizing user interfaces'
     ],
     'correctAnswer':
         'A widget that can be used to create custom scroll effects',
@@ -1299,8 +1267,8 @@ List<Map<String, dynamic>> questionsScrollableViews = [
     'question': 'What is a SliverAppBar in Flutter?',
     'answers': [
       'A widget that provides a material design app bar that can be scrolled away',
-      'A package for managing state in Flutter apps',
-      'A class that allows you to navigate between screens',
+      'A package for monitoring the state in Flutter apps',
+      'A class that allows you to navigate between two screens',
       'A design pattern for building user interfaces'
     ],
     'correctAnswer':
@@ -1310,8 +1278,8 @@ List<Map<String, dynamic>> questionsScrollableViews = [
     'question': 'What is a NestedScrollView in Flutter?',
     'answers': [
       'A widget that can be used to create a scroll view with a flexible header and body',
-      'A package for managing state in Flutter apps',
-      'A design pattern for building user interfaces',
+      'A package for managing state.',
+      'A design pattern for creating beautiful user interfaces',
       'A class that allows you to navigate between screens'
     ],
     'correctAnswer':
@@ -1321,7 +1289,7 @@ List<Map<String, dynamic>> questionsScrollableViews = [
     'question': 'What is a ScrollController in Flutter?',
     'answers': [
       'A class that can be used to control the position of a scroll view',
-      'A package for managing state in Flutter apps',
+      'A package for monitoring the state in Flutter apps',
       'A design pattern for building user interfaces',
       'A widget that displays a scrollable list of items'
     ],
@@ -1339,10 +1307,9 @@ List<Map<String, dynamic>> questionsScrollableViews = [
     'correctAnswer': 'To detect user gestures such as taps and swipes'
   },
   {
-    'question':
-        'What is the difference between a StatelessWidget and a StatefulWidget?',
+    'question': 'Difference between a StatelessWidget and a StatefulWidget?',
     'answers': [
-      'A StatelessWidget can be updated, but a StatefulWidget cannot',
+      'A StatelessWidget can be updated.',
       'A StatefulWidget is used for more complex UI layouts',
       'A StatelessWidget is used for more complex UI layouts',
       'A StatefulWidget can be updated, but a StatelessWidget cannot'

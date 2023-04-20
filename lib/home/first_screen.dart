@@ -495,7 +495,7 @@ class PietPainting extends StatelessWidget {
                 image: 'images/icon2.png',
                 scale: 6,
                 color: const Color.fromARGB(255, 97, 88, 252),
-                textQuestion: '17 Questions',
+                textQuestion: '16 Questions',
                 onPressed: () {
                   currentQuestionIndex = 0;
                   Navigator.push(context,
@@ -512,7 +512,7 @@ class PietPainting extends StatelessWidget {
                 image: 'images/icon7.png',
                 scale: 5,
                 color: const Color.fromARGB(255, 88, 145, 252),
-                textQuestion: '16 Questions',
+                textQuestion: '15 Questions',
                 onPressed: () {
                   currentQuestionIndex = 0;
                   Navigator.push(context,
