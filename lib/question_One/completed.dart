@@ -63,24 +63,31 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
           height: 45,
           width: double.infinity,
           color: const Color.fromARGB(255, 104, 0, 125),
-          child: RichText(
-            text: TextSpan(
-              text: '© copyright | ',
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  fontStyle: FontStyle.italic),
-              children: [
-                TextSpan(
-                    text: 'Joy Ehiedu',
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.italic),
-                    recognizer: TapGestureRecognizer(debugOwner: _launchUrl())),
-              ],
+          child: GestureDetector(
+            onTap: () {
+              _launchUrl();
+            },
+            child: Center(
+              child: RichText(
+                text: const TextSpan(
+                  text: '© copyright | ',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.italic),
+                  children: [
+                    TextSpan(
+                      text: 'Joy Ehiedu',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.italic),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ),
