@@ -176,8 +176,6 @@ class _BuildQuizScreenState extends State<BuildQuizScreen> {
     });
   }
 
-  int answerIndex = -1;
-
   String? selectedAnswer;
 
   void onAnswerSelected2(String answer) {
