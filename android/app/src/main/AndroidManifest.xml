@@ -3,7 +3,7 @@
    <application
         android:label="flutter_trivia"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/round_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -1,6 +1,5 @@
 // ignore_for_file: must_be_immutable, no_leading_underscores_for_local_identifiers, unused_element
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trivia/home/first_screen.dart';
 import 'package:flutter_trivia/question_One/question1.dart';
@@ -161,8 +160,8 @@ class _BuildFinishedScreenState extends State<BuildFinishedScreen> {
             Positioned(
               top: 120,
               left: MediaQuery.of(context).size.width * 0.25,
-              child: Column(
-                children: const [
+              child: const Column(
+                children: [
                   Text(
                     'Congrats!',
                     style: TextStyle(
