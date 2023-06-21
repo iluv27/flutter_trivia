@@ -3,6 +3,15 @@ import 'package:flutter_trivia/q&a/quiz_sect.dart';
 import 'package:flutter_trivia/question_One/question1.dart';
 import 'package:flutter_trivia/q&a/third_screen.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'dart:math';
+
+// Create a random number generator
+int randomNumber = 0;
+final Random random = Random();
+
+// Get a random QuizScreen from the list
+
+// QuizScreen randomQuizScreen = getRandomQuizScreen(screens);
 
 class QuizHomeScreen extends StatefulWidget {
   const QuizHomeScreen({super.key});
@@ -12,6 +21,25 @@ class QuizHomeScreen extends StatefulWidget {
 }
 
 class _QuizHomeScreenState extends State<QuizHomeScreen> {
+  QuizScreen generateRandomNumber() {
+    setState(() {
+      randomNumber = random.nextInt(screens.length);
+      // Generates a random number between 0 and 6
+    });
+
+    return screens[randomNumber];
+  }
+
+  void navigateToRandomQuizScreen() {
+    QuizScreen randomQuizScreen = generateRandomNumber();
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return randomQuizScreen;
+      }),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -59,7 +87,7 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 25.0, left: 25.0),
+                        padding: const EdgeInsets.only(top: 25.0, left: 20.0),
                         child: Stack(
                           alignment: Alignment.topLeft,
                           children: [
@@ -145,16 +173,7 @@ class _QuizHomeScreenState extends State<QuizHomeScreen> {
                         ),
                       ),
                       child: ElevatedButton(
-                        onPressed: (() {
-                          currentQuestionIndex = 0;
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: ((context) {
-                            return QuizScreen(
-                              questionTitle: 'Responsive Screens',
-                              questionQuestion: questionsFlutter,
-                            );
-                          })));
-                        }),
+                        onPressed: navigateToRandomQuizScreen,
                         style: ButtonStyle(
                           minimumSize: MaterialStateProperty.all<Size>(Size(
                               MediaQuery.of(context).size.width * 0.9, 55)),
@@ -583,3 +602,43 @@ class PietPainting extends StatelessWidget {
     );
   }
 }
+
+// SCREEN LIST
+List<QuizScreen> screens = [
+  QuizScreen(
+    questionTitle: 'State Management',
+    questionQuestion: questionsSTATEManagemnt,
+  ),
+  QuizScreen(
+    questionTitle: 'Flutter UI',
+    questionQuestion: questionsFlutterUI,
+  ),
+  QuizScreen(
+    questionTitle: 'Scrollable Views',
+    questionQuestion: questionsScrollableViews,
+  ),
+  QuizScreen(
+    questionTitle: 'Hot Reload',
+    questionQuestion: questionsHotReload,
+  ),
+  QuizScreen(
+    questionTitle: 'Flutter Layout',
+    questionQuestion: questionsFlutterLayout,
+  ),
+  QuizScreen(
+    questionTitle: 'APIs',
+    questionQuestion: questionsAPI,
+  ),
+  QuizScreen(
+    questionTitle: 'Widgets',
+    questionQuestion: questionsWidget,
+  ),
+  QuizScreen(
+    questionTitle: 'Responsive Screens',
+    questionQuestion: questions,
+  ),
+  QuizScreen(
+    questionTitle: 'General Quiz',
+    questionQuestion: questionsFlutter,
+  ),
+];

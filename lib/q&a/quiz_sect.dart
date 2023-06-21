@@ -397,7 +397,7 @@ List<Map<String, dynamic>> questionsSTATEManagemnt = [
     'answers': [
       'A type of flutter widget',
       'A function that builds and rebuilds widgets',
-      'A way to style widgets',
+      'A way to style and restyle widgets',
       'A pattern for state management',
     ],
     'correctAnswer': 'A pattern for state management'

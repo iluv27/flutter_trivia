@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_trivia">
    <application
-        android:label="flutter_trivia"
+        android:label="Flutter Trivia"
         android:name="${applicationName}"
         android:icon="@mipmap/round_launcher">
         <activity

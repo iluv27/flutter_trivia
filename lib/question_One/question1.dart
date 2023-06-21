@@ -70,7 +70,7 @@ class _QuizScreenState extends State<QuizScreen> {
               child: ClipPath(
                 clipper: AppBarClipper(),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.56,
+                  height: MediaQuery.of(context).size.height * 0.6,
                   decoration: ShapeDecoration(
                     gradient: const LinearGradient(
                       begin: Alignment.topCenter,
@@ -91,7 +91,7 @@ class _QuizScreenState extends State<QuizScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 50.0, left: 15, right: 15),
                 child: Container(
-                    height: 550,
+                    height: 600,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
